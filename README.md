@@ -189,9 +189,7 @@ Then run the script from the Anaconda Prompt as shown above.
 
 ## 📜 License
 
-<<<<<<< HEAD
 Copyright (C) 2025 Andrea Bonomo
 
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
-=======
->>>>>>> adcfe514a0872037d7f044fbdf4b62dfb3df424c
+
