@@ -177,7 +177,8 @@ If you use Anaconda or Miniconda, open the **Anaconda Prompt** and create a dedi
 ```cmd
 conda create -n raidnc python=3.10
 conda activate raidnc
-pip install pandas numpy biopython scikit-learn scipy joblib tqdm
+conda install pandas numpy scikit-learn scipy joblib tqdm -c defaults
+conda install biopython -c conda-forge
 ```
 
 Then run the script from the Anaconda Prompt as shown above.
