@@ -2,6 +2,10 @@
 
 RAIDNC is a command-line tool that classifies transcript sequences as **Protein-Coding** or **lncRNA** using a pre-trained Random Forest model. It takes FASTA files as input and outputs a TSV table with predictions and class probabilities for each transcript.
 
+## 🧑‍⚕️Author
+
+Andrea Bonomo
+
 ## 🔬 How It Works
 
 RAIDNC uses a k-mer frequency approach combined with sequence length to build a feature representation of each transcript:
@@ -185,4 +189,3 @@ Then run the script from the Anaconda Prompt as shown above.
 
 ## 📜 License
 
-This project is part of ongoing PhD research.
