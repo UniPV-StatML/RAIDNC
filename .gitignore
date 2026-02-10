@@ -1,0 +1,9 @@
+# Images
+*.png
+
+# Test files
+test_model.csv
+ara_test_claude.tsv
+
+# Metrics
+rf_metrics_*.csv
