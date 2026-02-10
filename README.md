@@ -4,7 +4,7 @@ RAIDNC is a command-line tool that classifies transcript sequences as **Protein-
 
 ## 🧑‍⚕️Author
 
-Andrea Bonomo
+Andrea Bonomo, PhD Candidate in Computational Mathematics, Learning and Data Science
 
 ## 🔬 How It Works
 
