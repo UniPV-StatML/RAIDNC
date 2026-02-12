@@ -40,6 +40,20 @@ Install all dependencies with:
 pip install pandas numpy biopython scikit-learn scipy joblib tqdm
 ```
 
+
+### Using Anaconda/Miniconda (alternative)
+
+If you use Anaconda or Miniconda, open the **Anaconda Prompt** and create a dedicated environment:
+
+```cmd
+conda create -n raidnc python=3.10
+conda activate raidnc
+conda install pandas numpy scikit-learn scipy joblib tqdm -c defaults
+conda install biopython -c conda-forge
+```
+
+Then run the script from the Anaconda Prompt as shown above.
+
 ### 🗂️ Model files
 
 The following pre-trained files must be present in the same directory as `RAIDNC.py` (or in a directory specified via `--model_dir`):
@@ -189,7 +203,6 @@ Then run the script from the Anaconda Prompt as shown above.
 
 ## 📜 License
 
-Copyright (C) 2025 Andrea Bonomo
 
 This project is licensed under the [GNU General Public License v3.0](LICENSE).
 
