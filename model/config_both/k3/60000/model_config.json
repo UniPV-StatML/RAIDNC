@@ -1,0 +1,16 @@
+{
+  "k": 3,
+  "log_length": false,
+  "orf_coverage": true,
+  "gc_content": true,
+  "fickett": true,
+  "utr_structure": true,
+  "kozak": true,
+  "kmer_entropy": true,
+  "kmer_entropy_orf": true,
+  "orf_stats": true,
+  "enc": true,
+  "hexamer": true,
+  "rfecv": false,
+  "n_features": 78
+}
