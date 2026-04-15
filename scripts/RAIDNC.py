@@ -15,18 +15,11 @@ Usage examples:
 Output:
     TSV file with columns:
       Transcript_ID, Prediction, Prob_Protein_Coding, Prob_lncRNA, FASTA_File
-
-Notes:
-    - When model_config.json is present in model_dir, uses the full
-      feature pipeline (k-mer + biological features + RFECV mask).
-    - When model_config.json is absent (legacy mode), uses k=12 + raw
-      length only, matching the original training configuration.
 """
 
 import sys
 import os
 import argparse
-import json
 import time
 from functools import partial
 from glob import glob
@@ -41,7 +34,23 @@ import joblib
 from tqdm import tqdm
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_MODEL_DIR = os.path.join(SCRIPT_DIR, 'model')
+DEFAULT_MODEL_DIR = os.path.join(SCRIPT_DIR, '..', 'model', 'config_both', 'k3', '60000')
+
+MODEL_CONFIG = {
+    "k":               3,
+    "log_length":      False,
+    "orf_coverage":    True,
+    "gc_content":      True,
+    "fickett":         True,
+    "utr_structure":   True,
+    "kozak":           True,
+    "kmer_entropy":    True,
+    "kmer_entropy_orf": True,
+    "orf_stats":       True,
+    "enc":             True,
+    "hexamer":         True,
+    "rfecv":           False,
+}
 
 
 # ── K-mer extraction ────────────────────────────────────────────────
@@ -51,32 +60,9 @@ def get_kmers(sequence, k):
     return [sequence[i:i+k] for i in range(len(sequence) - k + 1)]
 
 
-# ── Legacy feature pipeline (k=12 + raw length) ────────────────────
+# ── Feature pipeline ────────────────────────────────────────────────
 
-def fasta_to_features_legacy(fasta_path, vect, k=12):
-    """Read a FASTA file and convert to feature matrix (legacy mode)."""
-    seqs, names = [], []
-    for rec in SeqIO.parse(fasta_path, "fasta"):
-        seqs.append(str(rec.seq))
-        names.append(rec.id)
-
-    seqs_k = [' '.join(get_kmers(seq, k)) for seq in seqs]
-    X_counts = vect.transform(seqs_k).astype(float)
-
-    row_sums = np.array(X_counts.sum(axis=1)).ravel()
-    row_sums[row_sums == 0] = 1
-    X_freq = X_counts.multiply(1.0 / row_sums[:, None])
-
-    lengths = np.array([len(seq) for seq in seqs]).reshape(-1, 1)
-    X = sparse.hstack([X_freq, sparse.csr_matrix(lengths)], format='csr')
-
-    return X, names
-
-
-# ── Full feature pipeline ───────────────────────────────────────────
-
-def fasta_to_features_full(fasta_path, vect, config, hex_table=None,
-                           rfecv_mask=None):
+def fasta_to_features_full(fasta_path, vect, hex_table):
     """
     Read a FASTA file and build the full feature matrix matching
     the training pipeline in RAIDNC_experiments.py.
@@ -94,73 +80,35 @@ def fasta_to_features_full(fasta_path, vect, config, hex_table=None,
         names.append(rec.id)
 
     seqs = pd.Series(seqs_list)
-    k = config['k']
+    k = MODEL_CONFIG['k']
 
     # K-mer features
-    if isinstance(k, list):
-        matrices = []
-        for ki, vi in zip(k, vect):
-            seqs_k = seqs.apply(lambda s, _k=ki: ' '.join(get_kmers(s, _k)))
-            X_counts = vi.transform(seqs_k).astype(float)
-            row_sums = np.array(X_counts.sum(axis=1)).ravel()
-            row_sums[row_sums == 0] = 1
-            X_counts = X_counts.multiply(1.0 / row_sums[:, None])
-            matrices.append(X_counts)
-        X_kmer = sparse.hstack(matrices)
-    else:
-        seqs_k = seqs.apply(lambda s: ' '.join(get_kmers(s, k)))
-        X_kmer = vect.transform(seqs_k).astype(float)
-        row_sums = np.array(X_kmer.sum(axis=1)).ravel()
-        row_sums[row_sums == 0] = 1
-        X_kmer = X_kmer.multiply(1.0 / row_sums[:, None])
+    seqs_k = seqs.apply(lambda s: ' '.join(get_kmers(s, k)))
+    X_kmer = vect.transform(seqs_k).astype(float)
+    row_sums = np.array(X_kmer.sum(axis=1)).ravel()
+    row_sums[row_sums == 0] = 1
+    X_kmer = X_kmer.multiply(1.0 / row_sums[:, None])
 
-    # Length
+    # Length (raw)
     lengths = seqs.str.len().values.astype(float).reshape(-1, 1)
-    if config.get('log_length', False):
-        lengths = np.log1p(lengths)
     cols = [X_kmer, sparse.csr_matrix(lengths)]
 
-    # Biological features (same order as create_kmer_features)
-    if config.get('orf_coverage', False):
-        cols.append(sparse.csr_matrix(compute_orf_features(seqs)))
-    if config.get('gc_content', False):
-        cols.append(sparse.csr_matrix(compute_gc_content(seqs)))
-    if config.get('fickett', False):
-        cols.append(sparse.csr_matrix(compute_fickett_score(seqs)))
-    if config.get('utr_structure', False):
-        cols.append(sparse.csr_matrix(compute_utr_structure(seqs)))
-    if config.get('kozak', False):
-        cols.append(sparse.csr_matrix(compute_kozak_score(seqs)))
-    if config.get('kmer_entropy', False):
-        cols.append(sparse.csr_matrix(compute_kmer_entropy(seqs, k=3)))
-    if config.get('kmer_entropy_orf', False):
-        cols.append(sparse.csr_matrix(compute_kmer_entropy_orf(seqs, k=3)))
-    if config.get('orf_stats', False):
-        cols.append(sparse.csr_matrix(compute_orf_stats(seqs)))
-    if config.get('enc', False):
-        cols.append(sparse.csr_matrix(compute_enc(seqs)))
+    # Biological features (fixed order matching training pipeline)
+    cols.append(sparse.csr_matrix(compute_orf_features(seqs)))
+    cols.append(sparse.csr_matrix(compute_gc_content(seqs)))
+    cols.append(sparse.csr_matrix(compute_fickett_score(seqs)))
+    cols.append(sparse.csr_matrix(compute_utr_structure(seqs)))
+    cols.append(sparse.csr_matrix(compute_kozak_score(seqs)))
+    cols.append(sparse.csr_matrix(compute_kmer_entropy(seqs, k=3)))
+    cols.append(sparse.csr_matrix(compute_kmer_entropy_orf(seqs, k=3)))
+    cols.append(sparse.csr_matrix(compute_orf_stats(seqs)))
+    cols.append(sparse.csr_matrix(compute_enc(seqs)))
 
     X = sparse.hstack(cols, format='csr')
 
-    # RFECV mask (applied to base features, before hexamer)
-    if config.get('rfecv', False) and rfecv_mask is not None:
-        n_base = X.shape[1]
-        base_mask = rfecv_mask[:n_base]
-        X = X[:, base_mask]
-
-        # Hexamer (appended after RFECV mask if selected)
-        if config.get('hexamer', False) and hex_table is not None:
-            hexamer_selected = rfecv_mask[-1]  # last feature in mask
-            if hexamer_selected:
-                hex_scores = compute_hexamer_score(seqs, hex_table)
-                X = sparse.hstack([X, sparse.csr_matrix(hex_scores)],
-                                  format='csr')
-    else:
-        # No RFECV — append hexamer directly
-        if config.get('hexamer', False) and hex_table is not None:
-            hex_scores = compute_hexamer_score(seqs, hex_table)
-            X = sparse.hstack([X, sparse.csr_matrix(hex_scores)],
-                              format='csr')
+    # Hexamer log-likelihood (appended last)
+    hex_scores = compute_hexamer_score(seqs, hex_table)
+    X = sparse.hstack([X, sparse.csr_matrix(hex_scores)], format='csr')
 
     return X, names
 
@@ -171,14 +119,15 @@ def load_model(model_dir):
     """
     Load model artifacts from model_dir.
 
-    Returns (rf_model, vect, config, hex_table, rfecv_mask).
-    Config is None for legacy models.
+    Returns (rf_model, vect, hex_table).
     """
+    if not os.path.isdir(model_dir):
+        print(f"\nERROR: Model directory not found: {model_dir}\n")
+        sys.exit(1)
+
     model_path = os.path.join(model_dir, 'rf_model.joblib')
     vect_path = os.path.join(model_dir, 'kmer_vectorizer.joblib')
-    config_path = os.path.join(model_dir, 'model_config.json')
 
-    # Validate required files
     missing = []
     if not os.path.isfile(model_path):
         missing.append('rf_model.joblib')
@@ -188,45 +137,27 @@ def load_model(model_dir):
         print(f"\nERROR: Missing files in {model_dir}: "
               f"{', '.join(missing)}")
         print("Export a model first with --export-model in "
-              "RAIDNC_experiments.py, or place legacy model files "
-              "in the model/ directory.\n")
+              "RAIDNC_experiments.py.\n")
         sys.exit(1)
 
     rf_model = joblib.load(model_path)
     vect = joblib.load(vect_path)
 
-    # Load config (None for legacy models)
-    config = None
-    if os.path.isfile(config_path):
-        with open(config_path) as f:
-            config = json.load(f)
-
-    # Load optional RFECV mask
-    rfecv_mask = None
-    rfecv_path = os.path.join(model_dir, 'rfecv_mask.joblib')
-    if os.path.isfile(rfecv_path):
-        rfecv_mask = joblib.load(rfecv_path)
-
-    # Load optional hexamer table
-    hex_table = None
     hex_path = os.path.join(model_dir, 'hexamer_table.joblib')
-    if os.path.isfile(hex_path):
-        hex_table = joblib.load(hex_path)
+    if not os.path.isfile(hex_path):
+        print(f"\nERROR: Missing hexamer_table.joblib in {model_dir}\n")
+        sys.exit(1)
+    hex_table = joblib.load(hex_path)
 
-    return rf_model, vect, config, hex_table, rfecv_mask
+    return rf_model, vect, hex_table
 
 
 # ── Prediction ──────────────────────────────────────────────────────
 
-def predict_fasta(fasta_file, rf_model, vect, config=None,
-                  hex_table=None, rfecv_mask=None, threshold=0.5):
+def predict_fasta(fasta_file, rf_model, vect, hex_table, threshold=0.5):
     """Run predictions on a single FASTA file."""
     try:
-        if config is not None:
-            X, names = fasta_to_features_full(
-                fasta_file, vect, config, hex_table, rfecv_mask)
-        else:
-            X, names = fasta_to_features_legacy(fasta_file, vect)
+        X, names = fasta_to_features_full(fasta_file, vect, hex_table)
 
         probs = rf_model.predict_proba(X)
         preds = (probs[:, 1] >= threshold).astype(int)
@@ -240,9 +171,9 @@ def predict_fasta(fasta_file, rf_model, vect, config=None,
         })
     except Exception as e:
         print(f"[WARNING] Skipping {fasta_file}: {e}")
-        return pd.DataFrame(
-            columns=["Transcript_ID", "Prediction",
-                     "Prob_Protein_Coding", "Prob_lncRNA", "FASTA_File"])
+        return pd.DataFrame(columns=[
+            "Transcript_ID", "Prediction",
+            "Prob_Protein_Coding", "Prob_lncRNA", "FASTA_File"])
 
 
 # ── Main ────────────────────────────────────────────────────────────
@@ -272,29 +203,18 @@ def main():
 
     args = parser.parse_args()
 
-    rf_model, vect, config, hex_table, rfecv_mask = load_model(args.model_dir)
+    rf_model, vect, hex_table = load_model(args.model_dir)
 
-    if config is not None:
-        features = [f for f in ['orf_coverage', 'gc_content', 'fickett',
-                                'utr_structure', 'kozak', 'kmer_entropy',
-                                'kmer_entropy_orf', 'orf_stats', 'enc',
-                                'hexamer'] if config.get(f, False)]
-        print(f"Model: k={config['k']}, "
-              f"RFECV={config.get('rfecv', False)}, "
-              f"log_length={config.get('log_length', False)}")
-        if features:
-            print(f"Features: {', '.join(features)}")
-    else:
-        print("Model: legacy (k=12 + raw length)")
+    print(f"Model: k={MODEL_CONFIG['k']}, features: orf_coverage, gc_content, "
+          f"fickett, utr_structure, kozak, kmer_entropy, kmer_entropy_orf, "
+          f"orf_stats, enc, hexamer")
 
-    threshold = config['threshold'] if (config is not None and 'threshold' in config) else 0.5
-    if threshold != 0.5:
-        print(f"Threshold: {threshold:.4f}")
+    threshold = 0.5
 
     if args.fasta:
         start = time.time()
-        result_df = predict_fasta(args.fasta, rf_model, vect, config,
-                                  hex_table, rfecv_mask, threshold=threshold)
+        result_df = predict_fasta(args.fasta, rf_model, vect, hex_table,
+                                  threshold=threshold)
         result_df.to_csv(args.output, sep='\t', index=False)
         print(f"Predictions saved to {args.output}")
         print(f"Time elapsed: {time.time() - start:.2f}s")
@@ -314,8 +234,7 @@ def main():
         print(f"Running batch prediction with {workers} workers...")
 
         predict_fn = partial(predict_fasta, rf_model=rf_model, vect=vect,
-                             config=config, hex_table=hex_table,
-                             rfecv_mask=rfecv_mask, threshold=threshold)
+                             hex_table=hex_table, threshold=threshold)
         start = time.time()
         with ThreadPool(processes=workers) as pool:
             all_results = list(tqdm(

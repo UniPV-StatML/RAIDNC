@@ -4,6 +4,12 @@
 # Excluded scripts
 scripts/extract_test_set_ncv6.py
 
+# Excluded directories
+tables/
+figures/
+benchmark/
+data/benchmark_fasta/noncodev6/NONCODEv6_rat.fa
+
 # Python
 __pycache__/
 *.py[cod]
