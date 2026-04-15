@@ -1,2 +1,0 @@
-accuracy,f1_weighted,precision_pc,precision_lncRNA,recall_pc,recall_lncRNA,f1_pc,f1_lncRNA,roc_auc
-0.8703,0.8687,0.9756,0.8032,0.7597,0.981,0.8542,0.8833,0.9629
