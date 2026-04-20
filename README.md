@@ -99,7 +99,7 @@ RAIDNC_FINAL/
     ├── training/
     │   ├── cdhit09_noncodev6_lncRNA_human.fa
     │   └── cdhit09_gencode_pc_human_unique.fa
-    ├── test_set/                        # Independent test set (populated by extract_test_set_ncv6.py)
+    ├── test_set/                        # Independent test set
     └── benchmark_fasta/                 # Multi-species + cross-dataset FASTA for benchmarking
 ```
 
