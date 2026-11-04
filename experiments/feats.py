@@ -1,8 +1,6 @@
 """Fast, single-pass RAIDNC feature extractor.
 
-compute_bio(seq, strand='b') reproduces the 12 original bio features exactly
-(strand='b' == original behaviour, including the minus-strand slicing bug);
-strand='f' restricts ORF search to the sense strand.
+compute_bio(seq) computes the 12 biological features on the longest sense-strand ORF.
 compute_extra(seq) adds new candidate features (sense-strand ORF).
 """
 import math
@@ -18,7 +16,7 @@ for i, c in enumerate(b'ACGT'):
 CODONS = [''.join(p) for p in product('ACGT', repeat=3)]
 CODON_IDX = {c: i for i, c in enumerate(CODONS)}
 
-# ---- original constants (copied from RAIDNC_reproduce_ncv6.py) -------------
+# ---- Fickett, Kozak and ENC constants --------------------------------------
 _POS_PAR = [1.9, 1.8, 1.7, 1.6, 1.5, 1.4, 1.3, 1.2, 1.1, 0.0]
 _CON_PAR = [0.33, 0.31, 0.29, 0.27, 0.25, 0.23, 0.21, 0.19, 0.17, 0.0]
 _POS_PROB = {'A': [0.51, 0.55, 0.57, 0.52, 0.48, 0.58, 0.57, 0.54, 0.50, 0.36],
@@ -122,7 +120,7 @@ def kmer3_norm(seq):
     return c / s if s > 0 else c
 
 
-def compute_bio(seq, strand='b'):
+def compute_bio(seq, strand='f'):
     """12 original bio features, same order as BIO_NAMES; returns (feats, longest_orf_seq)."""
     s = seq.upper()
     L = len(s)

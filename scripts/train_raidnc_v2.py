@@ -2,13 +2,13 @@
 """
 Train RAIDNC v2 on the same data split as the paper.
 
-Protocol (identical to RAIDNC_reproduce_ncv6.py where not stated otherwise):
+Protocol:
   1. NONCODE v6 lncRNA / GENCODE v46 PC (config_both filter), 20 length bins.
   2. Independent test set: 3,000/class, seed 42; excluded from training.
   3. Training set: 60,000/class, seed 42.
   4. 5-fold stratified CV (seed 42), hexamer table rebuilt inside each fold.
   5. Decision threshold = largest value keeping out-of-fold lncRNA recall >= 0.981
-     (the paper's operating point). Replaces the v1 practice of a 0.5 cutoff.
+     (the paper's operating point).
   6. Final RF on all training data; evaluation on the independent test set.
 
 Usage:

@@ -5,7 +5,7 @@ End-to-end benchmark of RAIDNC v2 through the RAIDNC.py command-line interface.
   * rebuilds the paper's independent test set (3,000 + 3,000, seed 42) as FASTA
   * runs RAIDNC.py on it and on the five NONCODE v6 cross-species sets
   * writes results/benchmark_<preset>.csv and prints a comparison with the
-    values published for RAIDNC v1, CPC2 and LncDC (paper Figure 2 / Figure 3)
+    values published for CPC2 and LncDC (paper Figure 2 / Figure 3)
 
 Usage: python benchmark_v2.py --preset compact [--threads 28]
 """
@@ -19,14 +19,14 @@ import train_raidnc_v2 as T  # noqa: E402
 
 DATA = os.path.join(HERE, '..', 'data')
 RES = os.path.join(HERE, '..', 'results')
-SPECIES = {  # file, published recall: RAIDNC v1 (config_both), CPC2, LncDC
-    'A. thaliana':     ('NONCODEv6_ATH.fa',      0.9647, 0.9815, 0.9854),
-    'C. elegans':      ('NONCODEv6_celegans.fa', 0.9023, 0.8542, 0.8716),
-    'D. melanogaster': ('NONCODEv6_fruitfly.fa', 0.9276, 0.9270, 0.8926),
-    'M. musculus':     ('NONCODEv6_mouse.fa',    0.9843, 0.8681, 0.9432),
-    'S. cerevisiae':   ('NONCODEv6_yeast.fa',    0.9455, 0.8909, 0.9455),
+SPECIES = {  # file, published recall: CPC2, LncDC
+    'A. thaliana':     ('NONCODEv6_ATH.fa', 0.9815, 0.9854),
+    'C. elegans':      ('NONCODEv6_celegans.fa', 0.8542, 0.8716),
+    'D. melanogaster': ('NONCODEv6_fruitfly.fa', 0.9270, 0.8926),
+    'M. musculus':     ('NONCODEv6_mouse.fa', 0.8681, 0.9432),
+    'S. cerevisiae':   ('NONCODEv6_yeast.fa', 0.8909, 0.9455),
 }
-PAPER_TEST = {'RAIDNC v1': (0.8703, 0.9810, 0.7597), 'CPC2': (0.8017, 0.9357, 0.6677),
+PAPER_TEST = {'CPC2': (0.8017, 0.9357, 0.6677),
               'LncDC': (0.8316, 0.9687, 0.6941)}  # accuracy, recall lncRNA, recall PC
 
 
@@ -68,11 +68,11 @@ def main():
         rows.append(dict(dataset='human independent test', n=len(d), accuracy=accuracy_score(y, yp),
                      recall_lncRNA=recall_score(y, yp), recall_pc=recall_score(y, yp, pos_label=0),
                      mcc=matthews_corrcoef(y, yp), roc_auc=roc_auc_score(y, d['Prob_lncRNA'])))
-    for sp, (fn, v1, cpc2, lncdc) in SPECIES.items():
+    for sp, (fn, cpc2, lncdc) in SPECIES.items():
         d = run_raidnc(os.path.join(DATA, 'benchmark_fasta', 'noncodev6', fn),
                        os.path.join(tmp, fn + '.tsv'), model_dir, a.threads)
         rows.append(dict(dataset=sp, n=len(d), recall_lncRNA=(d['Prediction'] == 'lncRNA').mean(),
-                         paper_RAIDNC_v1=v1, paper_CPC2=cpc2, paper_LncDC=lncdc))
+                         paper_CPC2=cpc2, paper_LncDC=lncdc))
     df = pd.DataFrame(rows)
     sp = df[df['dataset'].isin(list(SPECIES))]
     macro = sp['recall_lncRNA'].mean()
@@ -80,8 +80,8 @@ def main():
     df.to_csv(os.path.join(RES, f'benchmark_{a.preset}.csv'), index=False)
     pd.set_option('display.width', 200)
     print(df.round(4).to_string(index=False))
-    print(f'macro recall {macro:.4f} (paper: v1 0.945, CPC2 0.904, LncDC 0.928) | '
-          f'micro recall {micro:.4f} (paper: v1 0.969, CPC2 0.884, LncDC 0.931)')
+    print(f'macro recall {macro:.4f} (paper: CPC2 0.904, LncDC 0.928) | '
+          f'micro recall {micro:.4f} (paper: CPC2 0.884, LncDC 0.931)')
     print('paper test (acc, rec_lnc, rec_pc):', PAPER_TEST)
 
 

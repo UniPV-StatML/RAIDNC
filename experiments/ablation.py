@@ -8,7 +8,7 @@ import numpy as np, pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import roc_auc_score, roc_curve
 from common import build_split, all_features, hex_column
-from run_exp import PAPER_RF, N_EXTRA_SCALAR
+from run_exp import BASELINE_RF, N_EXTRA_SCALAR
 from build_cache import BENCH
 import feats as F
 
@@ -35,7 +35,7 @@ def pc_at(yt, p, tpr_target=0.981):
 
 def evaluate(name, extra_idx):
     X = X_of(Fd, h, extra_idx)
-    clf = RandomForestClassifier(**PAPER_RF, oob_score=True, random_state=42, n_jobs=-1)
+    clf = RandomForestClassifier(**BASELINE_RF, oob_score=True, random_state=42, n_jobs=-1)
     clf.fit(X[tr], y[tr])
     oob = clf.oob_decision_function_[:, 1]
     pt = clf.predict_proba(X[te])[:, 1]
