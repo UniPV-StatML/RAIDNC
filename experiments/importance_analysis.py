@@ -5,7 +5,6 @@ impurity-based (MDI) importances stored in model/compact/feature_importances.csv
   1. permutation importance, single features   (drop in ROC-AUC on the independent test set)
   2. permutation importance, groups of correlated features permuted jointly
   3. SHAP (TreeExplainer): mean |SHAP| and direction, balanced test subsample
-  4. v1 check: did v1 'kozak' / 'n_orfs' encode the strand of the longest ORF?
 
 Outputs -> ../results/importance/
 Run (WSL): python importance_analysis.py
@@ -126,28 +125,6 @@ shap_df = pd.DataFrame({
 shap_df.to_csv(f'{OUT}/shap_mean_abs.csv', index=False)
 np.save(f'{OUT}/shap_values.npy', S); np.save(f'{OUT}/shap_rows.npy', rows)
 print(f'[3] SHAP done ({time.time()-t:.0f}s)', flush=True)
-
-# ---------------------------------------------------------------- 4. v1 strand-leak check
-F = pd.read_pickle(f'{WORK}/cache/feats_split.pkl')
-tr = (df['split'] == 'train').values
-lab = df['label'].values
-B, Fw = F['bio_b'], F['bio_f']  # v1 (both strands) / v2 (sense) bio features; col 1 = longest_orf
-has_orf = B[:, 1] > 0
-minus = B[:, 1] > Fw[:, 1]       # longest ORF found by v1 lies on the minus strand
-chk = {'n_train_with_orf': int((tr & has_orf).sum()),
-       'frac_longest_orf_minus_PC': float(minus[tr & has_orf & (lab == 0)].mean()),
-       'frac_longest_orf_minus_lnc': float(minus[tr & has_orf & (lab == 1)].mean())}
-m = tr & has_orf
-for name, j in (('kozak', 5), ('n_orfs', 8)):
-    a_strand = roc_auc_score(minus[m], B[m, j])
-    chk[f'{name}_v1_AUC_for_minus_strand'] = float(max(a_strand, 1 - a_strand))
-    chk[f'{name}_v1_AUC_for_label'] = float(max(roc_auc_score(lab[tr], B[tr, j]), 1 - roc_auc_score(lab[tr], B[tr, j])))
-    chk[f'{name}_v2_AUC_for_label'] = float(max(roc_auc_score(lab[tr], Fw[tr, j]), 1 - roc_auc_score(lab[tr], Fw[tr, j])))
-# kozak == 0 exactly happens when the 12-nt window does not fit; for minus ORFs v1 used the wrong anchor
-chk['kozak_v1_mean_plus_PC'] = float(B[m & ~minus & (lab == 0), 5].mean())
-chk['kozak_v1_mean_minus_PC'] = float(B[m & minus & (lab == 0), 5].mean())
-json.dump(chk, open(f'{OUT}/v1_strand_leak_check.json', 'w'), indent=2)
-print('[4]', json.dumps(chk, indent=1), flush=True)
 
 # ---------------------------------------------------------------- summary table (top 15 by each method)
 mdi = pd.read_csv(f'{V2}/model/compact/feature_importances.csv')

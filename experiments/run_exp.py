@@ -10,18 +10,16 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import (accuracy_score, recall_score, precision_score, roc_auc_score,
                              matthews_corrcoef, roc_curve)
-from common import R, build_split, all_features, hex_column
+from common import build_split, all_features, hex_column
 from build_cache import BENCH
 
-P = R.BEST_PARAMS_DEFAULT
-PAPER_RF = dict(n_estimators=P['n_estimators'], max_depth=P['max_depth'],
-                min_samples_split=P['min_samples_split'], min_samples_leaf=P['min_samples_leaf'],
-                max_features=P['max_features'], class_weight={0: 1.0, 1: P['lncrna_weight']})
+# starting hyperparameters used while the feature set was developed (before retuning)
+BASELINE_RF = dict(n_estimators=220, max_depth=50, min_samples_split=4, min_samples_leaf=10,
+                   max_features='log2', class_weight={0: 1.0, 1: 5.63})
 
 N_EXTRA_SCALAR = 14
 VARIANTS = {
     # name: (strand, extra-columns selector, rf overrides)
-    'orig':        ('b', None, {}),
     'fix':         ('f', None, {}),
     'fix_scalar':  ('f', slice(0, N_EXTRA_SCALAR), {}),
     'fix_codon':   ('f', slice(N_EXTRA_SCALAR, None), {}),
@@ -65,7 +63,7 @@ def run(name, strand, extra_sel, rf_over, out_dir='results'):
     y = df['label'].values
     tr_all = np.where(df['split'].values == 'train')[0]
     te_all = np.where(df['split'].values == 'test')[0]
-    rfp = {**PAPER_RF, **rf_over, 'random_state': 42, 'n_jobs': -1}
+    rfp = {**BASELINE_RF, **rf_over, 'random_state': 42, 'n_jobs': -1}
     orf_key = 'orf_' + strand
 
     oof = np.zeros(len(df))
