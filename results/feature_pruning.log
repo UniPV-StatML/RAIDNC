@@ -1,0 +1,41 @@
+matrices ready (94s)
+[full] nfeat=79 AUC=0.9727 pc@981=0.8030 ATH=0.9946 celegans=0.9283 fruitfly=0.9545 mouse=0.9894 yeast=0.9455 (454s)
+[drop_length] nfeat=78 AUC=0.9698 pc@981=0.7902 ATH=0.9913 celegans=0.9249 fruitfly=0.9518 mouse=0.9885 yeast=0.9273 (785s)
+[drop_orf_coverage] nfeat=78 AUC=0.9727 pc@981=0.8038 ATH=0.9946 celegans=0.9245 fruitfly=0.9468 mouse=0.9885 yeast=0.9636 (1090s)
+[drop_longest_orf] nfeat=78 AUC=0.9724 pc@981=0.8004 ATH=0.9943 celegans=0.9268 fruitfly=0.9500 mouse=0.9884 yeast=0.9455 (1387s)
+[drop_gc_content] nfeat=78 AUC=0.9727 pc@981=0.8052 ATH=0.9941 celegans=0.9211 fruitfly=0.9517 mouse=0.9894 yeast=0.9455 (1693s)
+[drop_fickett] nfeat=78 AUC=0.9719 pc@981=0.7999 ATH=0.9936 celegans=0.9245 fruitfly=0.9518 mouse=0.9893 yeast=0.9455 (1995s)
+[drop_utr_ratio] nfeat=78 AUC=0.9726 pc@981=0.8032 ATH=0.9943 celegans=0.9211 fruitfly=0.9510 mouse=0.9876 yeast=0.9455 (2291s)
+[drop_kozak] nfeat=78 AUC=0.9727 pc@981=0.8036 ATH=0.9951 celegans=0.9230 fruitfly=0.9517 mouse=0.9892 yeast=0.9455 (2582s)
+[drop_kmer_entropy] nfeat=78 AUC=0.9725 pc@981=0.8032 ATH=0.9936 celegans=0.9179 fruitfly=0.9552 mouse=0.9895 yeast=0.9455 (2870s)
+[drop_kmer_entropy_orf] nfeat=78 AUC=0.9727 pc@981=0.8026 ATH=0.9946 celegans=0.9245 fruitfly=0.9551 mouse=0.9890 yeast=0.9455 (3170s)
+[drop_n_orfs] nfeat=78 AUC=0.9728 pc@981=0.8036 ATH=0.9941 celegans=0.9271 fruitfly=0.9557 mouse=0.9893 yeast=0.9636 (3477s)
+[drop_orf_density] nfeat=78 AUC=0.9727 pc@981=0.8034 ATH=0.9946 celegans=0.9245 fruitfly=0.9559 mouse=0.9896 yeast=0.9636 (3781s)
+[drop_orf_length_ratio] nfeat=78 AUC=0.9728 pc@981=0.8060 ATH=0.9941 celegans=0.9239 fruitfly=0.9542 mouse=0.9901 yeast=0.9455 (4070s)
+[drop_enc] nfeat=78 AUC=0.9728 pc@981=0.8036 ATH=0.9941 celegans=0.9302 fruitfly=0.9548 mouse=0.9894 yeast=0.9455 (4360s)
+[drop_frame_maxrun_ratio] nfeat=78 AUC=0.9672 pc@981=0.7763 ATH=0.9829 celegans=0.9328 fruitfly=0.9449 mouse=0.9891 yeast=0.9636 (4651s)
+[drop_hexamer_score] nfeat=78 AUC=0.9674 pc@981=0.7652 ATH=0.9948 celegans=0.9242 fruitfly=0.9742 mouse=0.9910 yeast=0.9455 (4943s)
+[drop_low6] nfeat=73 AUC=0.9724 pc@981=0.8024 ATH=0.9933 celegans=0.9214 fruitfly=0.9452 mouse=0.9876 yeast=0.9455 (5217s)
+[drop_kmers] nfeat=15 AUC=0.9694 pc@981=0.7831 ATH=0.9936 celegans=0.9436 fruitfly=0.9530 mouse=0.9903 yeast=0.9818 (5260s)
+[only_core4] nfeat=4 AUC=0.9598 pc@981=0.7195 ATH=0.9958 celegans=0.9566 fruitfly=0.9630 mouse=0.9871 yeast=1.0000 (5272s)
+                variant  d_auc_mean  d_auc_sd  d_auc_folds_better  d_pc_mean  d_pc_sd  d_pc_folds_better  n_features    auc  pc_at981  recall_ATH  recall_celegans  recall_fruitfly  recall_mouse  recall_yeast  macro_species
+                   full      0.0000    0.0000                   0     0.0000   0.0000                  0          79 0.9727    0.8030      0.9946           0.9283           0.9545        0.9894        0.9455         0.9624
+            drop_length     -0.0029    0.0003                   0    -0.0128   0.0038                  0          78 0.9698    0.7902      0.9913           0.9249           0.9518        0.9885        0.9273         0.9567
+      drop_orf_coverage      0.0000    0.0001                   3     0.0008   0.0019                  3          78 0.9727    0.8038      0.9946           0.9245           0.9468        0.9885        0.9636         0.9636
+       drop_longest_orf     -0.0003    0.0002                   0    -0.0026   0.0030                  1          78 0.9724    0.8004      0.9943           0.9268           0.9500        0.9884        0.9455         0.9610
+        drop_gc_content     -0.0000    0.0001                   1     0.0022   0.0031                  4          78 0.9727    0.8052      0.9941           0.9211           0.9517        0.9894        0.9455         0.9603
+           drop_fickett     -0.0009    0.0002                   0    -0.0031   0.0051                  2          78 0.9719    0.7999      0.9936           0.9245           0.9518        0.9893        0.9455         0.9609
+         drop_utr_ratio     -0.0001    0.0001                   1     0.0002   0.0011                  4          78 0.9726    0.8032      0.9943           0.9211           0.9510        0.9876        0.9455         0.9599
+             drop_kozak     -0.0001    0.0002                   2     0.0006   0.0018                  3          78 0.9727    0.8036      0.9951           0.9230           0.9517        0.9892        0.9455         0.9609
+      drop_kmer_entropy     -0.0002    0.0002                   1     0.0002   0.0029                  3          78 0.9725    0.8032      0.9936           0.9179           0.9552        0.9895        0.9455         0.9603
+  drop_kmer_entropy_orf     -0.0001    0.0002                   2    -0.0004   0.0026                  2          78 0.9727    0.8026      0.9946           0.9245           0.9551        0.9890        0.9455         0.9617
+            drop_n_orfs      0.0000    0.0001                   3     0.0007   0.0021                  3          78 0.9728    0.8036      0.9941           0.9271           0.9557        0.9893        0.9636         0.9659
+       drop_orf_density     -0.0000    0.0001                   3     0.0004   0.0029                  2          78 0.9727    0.8034      0.9946           0.9245           0.9559        0.9896        0.9636         0.9657
+  drop_orf_length_ratio      0.0001    0.0001                   3     0.0031   0.0017                  5          78 0.9728    0.8060      0.9941           0.9239           0.9542        0.9901        0.9455         0.9615
+               drop_enc      0.0001    0.0000                   5     0.0006   0.0015                  4          78 0.9728    0.8036      0.9941           0.9302           0.9548        0.9894        0.9455         0.9628
+drop_frame_maxrun_ratio     -0.0055    0.0003                   0    -0.0267   0.0035                  0          78 0.9672    0.7763      0.9829           0.9328           0.9449        0.9891        0.9636         0.9627
+     drop_hexamer_score     -0.0053    0.0005                   0    -0.0378   0.0042                  0          78 0.9674    0.7652      0.9948           0.9242           0.9742        0.9910        0.9455         0.9659
+              drop_low6     -0.0003    0.0002                   0    -0.0006   0.0030                  3          73 0.9724    0.8024      0.9933           0.9214           0.9452        0.9876        0.9455         0.9586
+             drop_kmers     -0.0034    0.0003                   0    -0.0199   0.0040                  0          15 0.9694    0.7831      0.9936           0.9436           0.9530        0.9903        0.9818         0.9724
+             only_core4     -0.0129    0.0004                   0    -0.0835   0.0080                  0           4 0.9598    0.7195      0.9958           0.9566           0.9630        0.9871        1.0000         0.9805
+all done (5272s)

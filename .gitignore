@@ -6,7 +6,7 @@ scripts/extract_test_set_ncv6.py
 
 # Excluded directories
 tables/
-figures/
+/figures/
 benchmark/
 data/benchmark_fasta/noncodev6/NONCODEv6_rat.fa
 
@@ -19,3 +19,8 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Experiments (intermediate files)
+experiments/cache/
+experiments/results/
+results/tmp/

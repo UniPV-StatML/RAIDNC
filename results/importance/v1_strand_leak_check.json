@@ -1,0 +1,13 @@
+{
+  "n_train_with_orf": 111687,
+  "frac_longest_orf_minus_PC": 0.17138254297417266,
+  "frac_longest_orf_minus_lnc": 0.4907383103978402,
+  "kozak_v1_AUC_for_minus_strand": 0.8565385121560014,
+  "kozak_v1_AUC_for_label": 0.7255183904166667,
+  "kozak_v2_AUC_for_label": 0.687421016388889,
+  "n_orfs_v1_AUC_for_minus_strand": 0.6550761121515498,
+  "n_orfs_v1_AUC_for_label": 0.6582342541666667,
+  "n_orfs_v2_AUC_for_label": 0.6374334962499999,
+  "kozak_v1_mean_plus_PC": 0.779355539928437,
+  "kozak_v1_mean_minus_PC": -2.5402179
+}

@@ -1,0 +1,10 @@
+train 120000  test 6000  (14s)
+features done (23s)
+  fold 1: AUC=0.9718
+  fold 2: AUC=0.9724
+  fold 3: AUC=0.9725
+  fold 4: AUC=0.9709
+  fold 5: AUC=0.9714
+threshold=0.3042  CV: accuracy=0.8916 recall_lncRNA=0.9810 recall_pc=0.8021 precision_lncRNA=0.8321 precision_pc=0.9769 f1_lncRNA=0.9005 f1_pc=0.8809 f1_weighted=0.8907 mcc=0.7960 roc_auc=0.9718
+TEST: accuracy=0.8903 recall_lncRNA=0.9773 recall_pc=0.8033 precision_lncRNA=0.8325 precision_pc=0.9726 f1_lncRNA=0.8991 f1_pc=0.8799 f1_weighted=0.8895 mcc=0.7928 roc_auc=0.9715
+saved to ../model/compact_nofilter  (412s)

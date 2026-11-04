@@ -1,0 +1,90 @@
+{
+  "variant": "fix_scalar",
+  "n_features": 92,
+  "rf": {
+    "n_estimators": "220",
+    "max_depth": "50",
+    "min_samples_split": "4",
+    "min_samples_leaf": "10",
+    "max_features": "log2",
+    "class_weight": "{0: 1.0, 1: 5.63}",
+    "random_state": "42",
+    "n_jobs": "-1"
+  },
+  "cv_mean": {
+    "acc": 0.8875833333333333,
+    "recall_lnc": 0.9797,
+    "recall_pc": 0.7954666666666667,
+    "prec_lnc": 0.8272884964463183,
+    "mcc": 0.7886689402685638,
+    "auc": 0.9709168770833333,
+    "recall_pc_at_lnc981": 0.7893666666666667
+  },
+  "cv_std": {
+    "acc": 0.0010662108401041266,
+    "recall_lnc": 0.001241191184127374,
+    "recall_pc": 0.001941219547947476,
+    "prec_lnc": 0.001336922270611805,
+    "mcc": 0.0020381496175265524,
+    "auc": 0.0008631280674890554,
+    "recall_pc_at_lnc981": 0.005003776351694589
+  },
+  "test": {
+    "acc": 0.8888333333333334,
+    "recall_lnc": 0.976,
+    "recall_pc": 0.8016666666666666,
+    "prec_lnc": 0.8311098495600341,
+    "mcc": 0.7897605095938744,
+    "auc": 0.9707274444444445,
+    "recall_pc_at_lnc981": 0.765
+  },
+  "oof_threshold": 0.48780267932096066,
+  "test_at_thr": {
+    "acc": 0.886,
+    "recall_lnc": 0.9773333333333334,
+    "recall_pc": 0.7946666666666666,
+    "prec_lnc": 0.826381059751973,
+    "mcc": 0.7852112559461787,
+    "auc": 0.9707274444444445,
+    "recall_pc_at_lnc981": 0.765
+  },
+  "bench": {
+    "ATH": {
+      "n": 4046,
+      "recall_lnc": 0.9948096885813149,
+      "recall_lnc_thr": 0.995304003954523
+    },
+    "celegans": {
+      "n": 3154,
+      "recall_lnc": 0.8674698795180723,
+      "recall_lnc_thr": 0.8706404565630945
+    },
+    "fruitfly": {
+      "n": 42848,
+      "recall_lnc": 0.9501727035100822,
+      "recall_lnc_thr": 0.953253360716953
+    },
+    "yeast": {
+      "n": 55,
+      "recall_lnc": 0.9454545454545454,
+      "recall_lnc_thr": 0.9454545454545454
+    },
+    "mouse": {
+      "n": 131974,
+      "recall_lnc": 0.9813069240911089,
+      "recall_lnc_thr": 0.983042114355858
+    },
+    "gencode_human_lnc": {
+      "n": 59927,
+      "recall_lnc": 0.9624376324528175,
+      "recall_lnc_thr": 0.9636557812004606
+    },
+    "gencode_mouse_lnc": {
+      "n": 155946,
+      "recall_lnc": 0.9732663870827081,
+      "recall_lnc_thr": 0.9747091942082515
+    }
+  },
+  "fit_seconds": 7.666132688522339,
+  "total_seconds": 130.76342511177063
+}

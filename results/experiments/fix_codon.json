@@ -1,0 +1,73 @@
+{
+  "variant": "fix_codon",
+  "n_features": 142,
+  "rf": {
+    "n_estimators": "220",
+    "max_depth": "50",
+    "min_samples_split": "4",
+    "min_samples_leaf": "10",
+    "max_features": "log2",
+    "class_weight": "{0: 1.0, 1: 5.63}",
+    "random_state": "42",
+    "n_jobs": "-1"
+  },
+  "cv_mean": {
+    "acc": 0.8517833333333333,
+    "recall_lnc": 0.9865166666666667,
+    "recall_pc": 0.71705,
+    "prec_lnc": 0.7771166749319257,
+    "mcc": 0.7305959832856173,
+    "auc": 0.9628826715277778,
+    "recall_pc_at_lnc981": 0.7501666666666666
+  },
+  "cv_std": {
+    "acc": 0.0013097921802925857,
+    "recall_lnc": 0.0008778129388175705,
+    "recall_pc": 0.003202256149099304,
+    "prec_lnc": 0.0018490232396708272,
+    "mcc": 0.00197585559736557,
+    "auc": 0.0010584410339756953,
+    "recall_pc_at_lnc981": 0.004281095394613137
+  },
+  "test": {
+    "acc": 0.8515,
+    "recall_lnc": 0.986,
+    "recall_pc": 0.717,
+    "prec_lnc": 0.77698975571316,
+    "mcc": 0.7299041375251532,
+    "auc": 0.9633107777777777,
+    "recall_pc_at_lnc981": 0.751
+  },
+  "bench": {
+    "ATH": {
+      "n": 4046,
+      "recall_lnc": 0.9935739001482946
+    },
+    "celegans": {
+      "n": 3154,
+      "recall_lnc": 0.8975903614457831
+    },
+    "fruitfly": {
+      "n": 42848,
+      "recall_lnc": 0.952109783420463
+    },
+    "yeast": {
+      "n": 55,
+      "recall_lnc": 0.9454545454545454
+    },
+    "mouse": {
+      "n": 131974,
+      "recall_lnc": 0.9785109188173428
+    },
+    "gencode_human_lnc": {
+      "n": 59927,
+      "recall_lnc": 0.9715153436681295
+    },
+    "gencode_mouse_lnc": {
+      "n": 155946,
+      "recall_lnc": 0.9801854488092032
+    }
+  },
+  "fit_seconds": 7.8855273723602295,
+  "total_seconds": 135.36534357070923
+}
