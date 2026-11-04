@@ -8,3 +8,4 @@ joblib==1.6.0
 orfipy==0.0.4         # builds a C extension: on Windows use WSL, or install from bioconda
 # experiments / retuning only
 optuna==5.0.0
+shap==0.54.1          # feature-importance analysis (experiments/importance_analysis.py)

@@ -1,7 +1,7 @@
 # Experiments
 
 Scripts behind the analyses in the manuscript. Run them from this folder
-(`cd experiments`) with the packages in `../requirements.txt` (plus `shap` for the SHAP analysis).
+(`cd experiments`) with the packages in `../requirements.txt`.
 Intermediate files go to `experiments/cache/` and `experiments/results/` (not versioned); the
 published outputs are in `../results/`.
 
