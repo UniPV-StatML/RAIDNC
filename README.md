@@ -4,7 +4,7 @@
 
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18632923-blue)](https://doi.org/10.5281/zenodo.18632923)
+[![Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23949271-blue)](https://doi.org/10.5281/zenodo.23949271)
 
 > 🔬 Bonomo A., Rigano G., Giosa D., Giuffrè L., Romeo O., Figini S., Ballante E.
 > *"RAIDNC: Random Forest Assisted Identification and Discrimination of Non-Coding transcripts"*, manuscript in preparation.
