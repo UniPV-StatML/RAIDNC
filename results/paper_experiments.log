@@ -1,0 +1,122 @@
+    Excluded 4 lncRNA IDs (IDS_TO_REMOVE)
+    PC filter 'config_both': removed 572, remaining 66259
+{'model': 'RF', 'accuracy': 0.8986, 'f1_weighted': 0.8985508986349392, 'f1_pc': 0.896319018404908, 'f1_lncRNA': 0.9007827788649706, 'recall_pc': 0.8766, 'recall_lncRNA': 0.9206, 'roc_auc': 0.9612202200000001}
+{'model': 'SVM', 'accuracy': 0.734, 'f1_weighted': 0.7335651356718381, 'f1_pc': 0.7228011671529804, 'f1_lncRNA': 0.7443291041906959, 'recall_pc': 0.6936, 'recall_lncRNA': 0.7744, 'roc_auc': 0.80225924}
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+{'model': 'LogReg', 'accuracy': 0.8733, 'f1_weighted': 0.8731709374776867, 'f1_pc': 0.8691250903832248, 'f1_lncRNA': 0.8772167845721485, 'recall_pc': 0.8414, 'recall_lncRNA': 0.9052, 'roc_auc': 0.94862888}
+{'model': 'NB', 'accuracy': 0.6458, 'f1_weighted': 0.6456125290278558, 'f1_pc': 0.6537634408602151, 'f1_lncRNA': 0.6374616171954964, 'recall_pc': 0.6688, 'recall_lncRNA': 0.6228, 'roc_auc': nan}
+model selection done (43s)
+{'n_per_class': 5000, 'accuracy': np.float64(0.9088), 'f1_weighted': np.float64(0.9088), 'f1_pc': np.float64(0.9067), 'f1_lncRNA': np.float64(0.9108), 'recall_pc': np.float64(0.886), 'recall_lncRNA': np.float64(0.9316), 'roc_auc': np.float64(0.9678), 'accuracy_sd': np.float64(0.0086), 'f1_weighted_sd': np.float64(0.0086), 'f1_pc_sd': np.float64(0.0087), 'f1_lncRNA_sd': np.float64(0.0084), 'recall_pc_sd': np.float64(0.0089), 'recall_lncRNA_sd': np.float64(0.0104), 'roc_auc_sd': np.float64(0.0042), 'false_positive_rate_pc': np.float64(0.114)}
+{'n_per_class': 15000, 'accuracy': np.float64(0.913), 'f1_weighted': np.float64(0.913), 'f1_pc': np.float64(0.9109), 'f1_lncRNA': np.float64(0.915), 'recall_pc': np.float64(0.8893), 'recall_lncRNA': np.float64(0.9367), 'roc_auc': np.float64(0.9684), 'accuracy_sd': np.float64(0.007), 'f1_weighted_sd': np.float64(0.007), 'f1_pc_sd': np.float64(0.0071), 'f1_lncRNA_sd': np.float64(0.007), 'recall_pc_sd': np.float64(0.0066), 'recall_lncRNA_sd': np.float64(0.0088), 'roc_auc_sd': np.float64(0.0039), 'false_positive_rate_pc': np.float64(0.1107)}
+{'n_per_class': 30000, 'accuracy': np.float64(0.9141), 'f1_weighted': np.float64(0.914), 'f1_pc': np.float64(0.912), 'f1_lncRNA': np.float64(0.916), 'recall_pc': np.float64(0.8913), 'recall_lncRNA': np.float64(0.9368), 'roc_auc': np.float64(0.9696), 'accuracy_sd': np.float64(0.0022), 'f1_weighted_sd': np.float64(0.0022), 'f1_pc_sd': np.float64(0.0022), 'f1_lncRNA_sd': np.float64(0.0023), 'recall_pc_sd': np.float64(0.0025), 'recall_lncRNA_sd': np.float64(0.0041), 'roc_auc_sd': np.float64(0.001), 'false_positive_rate_pc': np.float64(0.1087)}
+{'n_per_class': 60000, 'accuracy': np.float64(0.9168), 'f1_weighted': np.float64(0.9168), 'f1_pc': np.float64(0.9148), 'f1_lncRNA': np.float64(0.9187), 'recall_pc': np.float64(0.8933), 'recall_lncRNA': np.float64(0.9403), 'roc_auc': np.float64(0.9715), 'accuracy_sd': np.float64(0.0017), 'f1_weighted_sd': np.float64(0.0017), 'f1_pc_sd': np.float64(0.0018), 'f1_lncRNA_sd': np.float64(0.0016), 'recall_pc_sd': np.float64(0.0031), 'recall_lncRNA_sd': np.float64(0.0025), 'roc_auc_sd': np.float64(0.0009), 'false_positive_rate_pc': np.float64(0.1067)}
+all done (222s)

@@ -1,0 +1,67 @@
+    Excluded 4 lncRNA IDs (IDS_TO_REMOVE)
+    PC filter 'config_both': removed 572, remaining 66259
+data + bio features ready (11s)
+HOLDOUT {'k': 3, 'regime': 'normalized', 'model': 'RF', 'n_features': 78, 'accuracy': 0.897, 'recall_lncRNA': 0.917, 'recall_pc': 0.877, 'precision_lncRNA': 0.8817, 'f1_lncRNA': 0.899, 'f1_pc': 0.8949, 'f1_weighted': 0.897, 'roc_auc': 0.9616, 'seconds': 0.5355}
+HOLDOUT {'k': 3, 'regime': 'normalized', 'model': 'SVM', 'n_features': 78, 'accuracy': 0.56, 'recall_lncRNA': 0.145, 'recall_pc': 0.975, 'precision_lncRNA': 0.8529, 'f1_lncRNA': 0.2479, 'f1_pc': 0.689, 'f1_weighted': 0.4685, 'roc_auc': 0.7767, 'seconds': 0.0355}
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+HOLDOUT {'k': 3, 'regime': 'normalized', 'model': 'LogReg', 'n_features': 78, 'accuracy': 0.881, 'recall_lncRNA': 0.916, 'recall_pc': 0.846, 'precision_lncRNA': 0.8561, 'f1_lncRNA': 0.885, 'f1_pc': 0.8767, 'f1_weighted': 0.8809, 'roc_auc': 0.9502, 'seconds': 5.2915}
+HOLDOUT {'k': 3, 'regime': 'raw', 'model': 'RF', 'n_features': 64, 'accuracy': 0.8195, 'recall_lncRNA': 0.797, 'recall_pc': 0.842, 'precision_lncRNA': 0.8346, 'f1_lncRNA': 0.8153, 'f1_pc': 0.8235, 'f1_weighted': 0.8194, 'roc_auc': 0.9038, 'seconds': 0.4563}
+HOLDOUT {'k': 3, 'regime': 'raw', 'model': 'SVM', 'n_features': 64, 'accuracy': 0.7535, 'recall_lncRNA': 0.607, 'recall_pc': 0.9, 'precision_lncRNA': 0.8586, 'f1_lncRNA': 0.7112, 'f1_pc': 0.785, 'f1_weighted': 0.7481, 'roc_auc': 0.8724, 'seconds': 0.0637}
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+HOLDOUT {'k': 3, 'regime': 'raw', 'model': 'LogReg', 'n_features': 64, 'accuracy': 0.8205, 'recall_lncRNA': 0.853, 'recall_pc': 0.788, 'precision_lncRNA': 0.8009, 'f1_lncRNA': 0.8262, 'f1_pc': 0.8145, 'f1_weighted': 0.8203, 'roc_auc': 0.8962, 'seconds': 1.9895}
+HOLDOUT {'k': 3, 'regime': 'raw', 'model': 'NB', 'n_features': 64, 'accuracy': 0.6605, 'recall_lncRNA': 0.643, 'recall_pc': 0.678, 'precision_lncRNA': 0.6663, 'f1_lncRNA': 0.6545, 'f1_pc': 0.6663, 'f1_weighted': 0.6604, 'roc_auc': 0.7026, 'seconds': 0.0119}
+HOLDOUT {'k': 6, 'regime': 'normalized', 'model': 'RF', 'n_features': 4110, 'accuracy': 0.8855, 'recall_lncRNA': 0.901, 'recall_pc': 0.87, 'precision_lncRNA': 0.8739, 'f1_lncRNA': 0.8872, 'f1_pc': 0.8837, 'f1_weighted': 0.8855, 'roc_auc': 0.9541, 'seconds': 1.9535}
+HOLDOUT {'k': 6, 'regime': 'normalized', 'model': 'SVM', 'n_features': 4110, 'accuracy': 0.7255, 'recall_lncRNA': 0.989, 'recall_pc': 0.462, 'precision_lncRNA': 0.6477, 'f1_lncRNA': 0.7827, 'f1_pc': 0.6273, 'f1_weighted': 0.705, 'roc_auc': 0.7943, 'seconds': 0.5224}
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+HOLDOUT {'k': 6, 'regime': 'normalized', 'model': 'LogReg', 'n_features': 4110, 'accuracy': 0.881, 'recall_lncRNA': 0.92, 'recall_pc': 0.842, 'precision_lncRNA': 0.8534, 'f1_lncRNA': 0.8855, 'f1_pc': 0.8762, 'f1_weighted': 0.8808, 'roc_auc': 0.9496, 'seconds': 82.5755}
+HOLDOUT {'k': 6, 'regime': 'raw', 'model': 'RF', 'n_features': 4096, 'accuracy': 0.785, 'recall_lncRNA': 0.756, 'recall_pc': 0.814, 'precision_lncRNA': 0.8025, 'f1_lncRNA': 0.7786, 'f1_pc': 0.7911, 'f1_weighted': 0.7848, 'roc_auc': 0.8691, 'seconds': 1.5337}
+HOLDOUT {'k': 6, 'regime': 'raw', 'model': 'SVM', 'n_features': 4096, 'accuracy': 0.796, 'recall_lncRNA': 0.822, 'recall_pc': 0.77, 'precision_lncRNA': 0.7814, 'f1_lncRNA': 0.8012, 'f1_pc': 0.7906, 'f1_weighted': 0.7959, 'roc_auc': 0.8606, 'seconds': 0.4663}
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+HOLDOUT {'k': 6, 'regime': 'raw', 'model': 'LogReg', 'n_features': 4096, 'accuracy': 0.808, 'recall_lncRNA': 0.808, 'recall_pc': 0.808, 'precision_lncRNA': 0.808, 'f1_lncRNA': 0.808, 'f1_pc': 0.808, 'f1_weighted': 0.808, 'roc_auc': 0.8768, 'seconds': 4.9524}
+HOLDOUT {'k': 6, 'regime': 'raw', 'model': 'NB', 'n_features': 4096, 'accuracy': 0.7085, 'recall_lncRNA': 0.688, 'recall_pc': 0.729, 'precision_lncRNA': 0.7174, 'f1_lncRNA': 0.7024, 'f1_pc': 0.7144, 'f1_weighted': 0.7084, 'roc_auc': 0.761, 'seconds': 0.0607}
+HOLDOUT {'k': 9, 'regime': 'normalized', 'model': 'RF', 'n_features': 261698, 'accuracy': 0.831, 'recall_lncRNA': 0.795, 'recall_pc': 0.867, 'precision_lncRNA': 0.8567, 'f1_lncRNA': 0.8247, 'f1_pc': 0.8369, 'f1_weighted': 0.8308, 'roc_auc': 0.9259, 'seconds': 2.9807}
+HOLDOUT {'k': 9, 'regime': 'normalized', 'model': 'SVM', 'n_features': 261698, 'accuracy': 0.7255, 'recall_lncRNA': 0.989, 'recall_pc': 0.462, 'precision_lncRNA': 0.6477, 'f1_lncRNA': 0.7827, 'f1_pc': 0.6273, 'f1_weighted': 0.705, 'roc_auc': 0.7943, 'seconds': 0.958}
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:470: ConvergenceWarning: lbfgs failed to converge after 5000 iteration(s) (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT
+
+Increase the number of iterations to improve the convergence (max_iter=5000).
+You might also want to scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+HOLDOUT {'k': 9, 'regime': 'normalized', 'model': 'LogReg', 'n_features': 261698, 'accuracy': 0.878, 'recall_lncRNA': 0.911, 'recall_pc': 0.845, 'precision_lncRNA': 0.8546, 'f1_lncRNA': 0.8819, 'f1_pc': 0.8738, 'f1_weighted': 0.8779, 'roc_auc': 0.9468, 'seconds': 794.0559}
+HOLDOUT {'k': 9, 'regime': 'raw', 'model': 'RF', 'n_features': 261684, 'accuracy': 0.732, 'recall_lncRNA': 0.592, 'recall_pc': 0.872, 'precision_lncRNA': 0.8222, 'f1_lncRNA': 0.6884, 'f1_pc': 0.7649, 'f1_weighted': 0.7266, 'roc_auc': 0.8418, 'seconds': 2.9117}
+HOLDOUT {'k': 9, 'regime': 'raw', 'model': 'SVM', 'n_features': 261684, 'accuracy': 0.836, 'recall_lncRNA': 0.856, 'recall_pc': 0.816, 'precision_lncRNA': 0.8231, 'f1_lncRNA': 0.8392, 'f1_pc': 0.8327, 'f1_weighted': 0.8359, 'roc_auc': 0.9058, 'seconds': 0.4579}
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
+HOLDOUT {'k': 9, 'regime': 'raw', 'model': 'LogReg', 'n_features': 261684, 'accuracy': 0.845, 'recall_lncRNA': 0.893, 'recall_pc': 0.797, 'precision_lncRNA': 0.8148, 'f1_lncRNA': 0.8521, 'f1_pc': 0.8372, 'f1_weighted': 0.8446, 'roc_auc': 0.9175, 'seconds': 4.4217}
+HOLDOUT {'k': 9, 'regime': 'raw', 'model': 'NB', 'n_features': 261684, 'accuracy': 0.74, 'recall_lncRNA': 0.693, 'recall_pc': 0.787, 'precision_lncRNA': 0.7649, 'f1_lncRNA': 0.7272, 'f1_pc': 0.7517, 'f1_weighted': 0.7394, 'roc_auc': 0.8118, 'seconds': 0.1161}
+HOLDOUT {'k': 12, 'regime': 'normalized', 'model': 'RF', 'n_features': 7270881, 'accuracy': 0.807, 'recall_lncRNA': 0.968, 'recall_pc': 0.646, 'precision_lncRNA': 0.7322, 'f1_lncRNA': 0.8338, 'f1_pc': 0.77, 'f1_weighted': 0.8019, 'roc_auc': 0.9147, 'seconds': 33.0559}
+HOLDOUT {'k': 12, 'regime': 'normalized', 'model': 'SVM', 'n_features': 7270881, 'accuracy': 0.7255, 'recall_lncRNA': 0.989, 'recall_pc': 0.462, 'precision_lncRNA': 0.6477, 'f1_lncRNA': 0.7827, 'f1_pc': 0.6273, 'f1_weighted': 0.705, 'roc_auc': 0.7943, 'seconds': 3.525}
+/home/andre/raidnc_env/lib/python3.12/site-packages/sklearn/linear_model/_logistic.py:456: OptimizeWarning: Unknown solver options: iprint
+  opt_res = optimize.minimize(
