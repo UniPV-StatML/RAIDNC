@@ -2,110 +2,135 @@
 
 ### **R**andom Forest **A**ssisted **I**dentification and **D**iscrimination of **N**on-**C**oding transcripts
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18632923-blue)](https://doi.org/10.5281/zenodo.18632923)
 
-> 🔬 Bonomo A., Rigano G., Giosa D., Giuffre L., Romeo O., Figini S., Ballante E.
-> *"RAIDNC: Random Forest Assisted Identification and Discrimination of Non-Coding transcripts"* — manuscript in preparation.
+> 🔬 Bonomo A., Rigano G., Giosa D., Giuffrè L., Romeo O., Figini S., Ballante E.
+> *"RAIDNC: Random Forest Assisted Identification and Discrimination of Non-Coding transcripts"*, manuscript in preparation.
 
-RAIDNC is an **alignment-free** Random Forest classifier that discriminates long non-coding RNAs (lncRNAs) from protein-coding (PC) transcripts. It combines normalized k-mer frequency profiles with a rich set of biological sequence features — no reference genome or sequence alignment required.
+RAIDNC is an **alignment-free** Random Forest classifier that separates long non-coding RNAs (lncRNAs)
+from protein-coding (PC) transcripts. It combines tri-nucleotide frequencies with thirteen biological
+sequence features computed on the sense strand. It needs no reference genome and no alignment.
+
+**Version 2.0.** See [CHANGELOG.md](CHANGELOG.md) for what changed from v1 (tags `1.1` / `v1.0`).
 
 ---
 
 ## ✨ Highlights
 
-- 🚀 **Alignment-free** — works directly on raw FASTA sequences
-- 🌿 **Biologically-informed** — ORF statistics, GC content, Kozak consensus, hexamer log-likelihood, ENC, and more
-- 🎯 **High lncRNA sensitivity** with balanced precision across both classes
-- ⚙️ **Flexible** — single-file or batch prediction, exportable model, full reproducibility pipeline
-- 🔁 **Reproducible** — systematic experiment framework with `--resume`, `--rfecv`, `--optuna`
+- 🚀 **Alignment-free**: works directly on FASTA transcripts.
+- 🌿 **Biologically informed**: ORF structure, stop-free stretch ratio, hexamer log-likelihood, Fickett, Kozak, ENC, k-mer entropies.
+- 🎯 **Recall-first by design**: the decision threshold is calibrated so that lncRNA recall is 0.981 on out-of-fold training predictions; `--threshold 0.5` gives a more balanced operating point.
+- ⚡ **Fast**: one ORF scan per sequence and multiprocessing inside each FASTA file.
+- 🔁 **Reproducible**: one script retrains the released models; one script reruns the benchmark through the command line.
 
 ---
 
 ## 📦 Installation
 
-Python >= 3.8 is required.
+Tested with Python 3.12 on Linux / WSL.
 
-**With pip:**
 ```bash
 pip install -r requirements.txt
 ```
 
-**With Conda:**
-```bash
-conda create -n raidnc python=3.10
-conda activate raidnc
-conda install numpy pandas scikit-learn scipy matplotlib seaborn joblib tqdm -c defaults
-conda install biopython orfipy -c conda-forge
-```
+- `orfipy` builds a C extension. On Windows, use WSL, or install it from bioconda.
+- Models and FASTA files are stored with **Git LFS**: install `git-lfs` before cloning, otherwise the
+  `.joblib` and `.fa` files are small pointer files and loading fails.
+- The released models were saved with scikit-learn 1.7.0 (pinned in `requirements.txt`).
 
 ---
 
-## ⚡ Quick Start
-
-### Classify new transcripts
+## ⚡ Quick start
 
 ```bash
-python scripts/RAIDNC.py --fasta input.fa --output predictions.tsv
+cd scripts
+python RAIDNC.py --fasta input.fa --output predictions.tsv              # default model, all cores
+python RAIDNC.py --fasta input.fa --model_dir ../model/tuned -t 8      # another model, 8 workers
+python RAIDNC.py --batch_dir fastas/ --output batch.tsv                 # every *.fa / *.fasta / *.fna
+python RAIDNC.py --fasta input.fa --threshold 0.5                       # balanced operating point
 ```
 
-Using a custom model directory:
+Output: a TSV with `Transcript_ID`, `Prediction` (`lncRNA` / `Protein_Coding`),
+`Prob_Protein_Coding`, `Prob_lncRNA`, `FASTA_File`.
 
-```bash
-python scripts/RAIDNC.py --model_dir model/config_both/k3/60000/ --fasta input.fa --output predictions.tsv
-```
+### Models
 
-The output is a TSV file with columns: `Transcript_ID`, `Prediction` (`lncRNA` / `Protein_Coding`), `Prob_Protein_Coding`, `Prob_lncRNA`, `FASTA_File`.
+| Model | Use | PC reference set | Threshold | Size |
+|---|---|---|---|---|
+| `model/compact` | **default** | config_both | 0.3005 | 50 MB |
+| `model/tuned` | best Optuna trial, equivalent performance | config_both | 0.2865 | 83 MB |
+| `model/compact_nofilter` | same hyperparameters | config_nofilter | 0.3042 | 50 MB |
+
+Each folder holds the Random Forest, the hexamer table and a `model_config.json` with the ordered
+feature list, the hyperparameters, the threshold and the cross-validation and test metrics.
 
 ---
 
-## 🔁 Reproducibility Pipeline
+## 📊 Performance
 
-`RAIDNC_reproduce_ncv6.py` reproduces the experimental steps described in the paper.
+Independent human test set (3,000 lncRNA + 3,000 PC, excluded from training), default model:
 
-```bash
-python scripts/RAIDNC_reproduce_ncv6.py           # all steps
-python scripts/RAIDNC_reproduce_ncv6.py --step 1
-python scripts/RAIDNC_reproduce_ncv6.py --step 1 2 3
-```
+| Accuracy | Recall lncRNA | Recall PC | ROC-AUC | MCC |
+|---|---|---|---|---|
+| 0.892 | 0.979 | 0.804 | 0.973 | 0.796 |
 
-| Step | Description |
-|:----:|-------------|
-| 1️⃣ | Classifier comparison (SGD-SVM, Logistic Regression, Naive Bayes, Random Forest) — 5-fold CV, k=3 |
-| 2️⃣ | Sample-size study (5k / 15k / 30k / 60k seq/class) + Optuna hyperparameter tuning (200 trials, Fβ=2) |
-| 3️⃣ | Final model — 60k seq/class, Optuna params, 5-fold CV + independent test (3k seq/class) |
+Cross-species lncRNA recall (NONCODE v6, model trained on human data only):
 
-Results are written to `results_reproduce_ncv6/`.
+| *A. thaliana* | *C. elegans* | *D. melanogaster* | *M. musculus* | *S. cerevisiae* |
+|---|---|---|---|---|
+| 99.46% | 92.83% | 95.45% | 98.94% | 94.55% |
+
+Full results: `results/` (benchmarks, cross-validation, Optuna history) and `plots/`.
 
 ---
 
+## 🔁 Reproducing
 
-## 🗂️ Repository Structure
+```bash
+cd scripts
+bash train_all.sh python3                  # retrains compact + tuned (~17 min on 28 cores)
+python3 train_raidnc_v2.py --preset compact --pc_filter nofilter --out ../model/compact_nofilter
+python3 benchmark_v2.py --preset compact   # test set + NONCODE v6 species through RAIDNC.py
+```
+
+`train_raidnc_v2.py` reproduces the manuscript protocol: length-stratified sampling (20 bins),
+independent test set (3,000/class, seed 42), 60,000 sequences/class for training, 5-fold CV with the
+hexamer table rebuilt in each fold, threshold fixed on out-of-fold predictions.
+
+The analyses behind the manuscript (model selection, ablation, Optuna, feature importance, residual
+errors, v1 vs v2 comparison) are in [`experiments/`](experiments/README.md).
+
+---
+
+## 🗂️ Repository structure
 
 ```
-RAIDNC_FINAL/
-├── 📄 requirements.txt
-├── 🐍 scripts/
-│   ├── RAIDNC.py                        # Inference script
-│   └── RAIDNC_reproduce_ncv6.py         # Reproducibility pipeline
-├── 🤖 model/
-│   └── config_both/k3/60000/
-│       ├── rf_model.joblib              # Pre-trained Random Forest
-│       ├── kmer_vectorizer.joblib       # Fitted CountVectorizer
-│       ├── hexamer_table.joblib         # Hexamer log-likelihood table
-│       └── model_config.json           # Feature configuration (78 features)
-└── 🧬 data/
+RAIDNC/
+├── requirements.txt
+├── CHANGELOG.md
+├── scripts/
+│   ├── RAIDNC.py              # command-line prediction
+│   ├── raidnc_features.py     # feature extraction (79 features)
+│   ├── train_raidnc_v2.py     # training protocol
+│   ├── train_all.sh
+│   └── benchmark_v2.py        # end-to-end benchmark
+├── model/
+│   ├── compact/               # default model
+│   ├── tuned/
+│   └── compact_nofilter/
+├── results/                   # benchmarks, logs, experiment outputs, Optuna history, test set FASTA
+├── plots/                     # comparison and feature-importance figures + scripts
+├── experiments/               # manuscript analyses (see experiments/README.md)
+└── data/
     ├── training/
-    │   ├── cdhit09_noncodev6_lncRNA_human.fa
-    │   └── cdhit09_gencode_pc_human_unique.fa
-    ├── test_set/                        # Independent test set
-    └── benchmark_fasta/                 # Multi-species + cross-dataset FASTA for benchmarking
+    └── benchmark_fasta/
 ```
 
 ---
 
-## 🗄️ Data Sources
+## 🗄️ Data sources
 
 Training data is available on [Zenodo](https://doi.org/10.5281/zenodo.18632923).
 

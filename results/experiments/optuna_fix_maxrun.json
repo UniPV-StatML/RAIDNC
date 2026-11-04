@@ -1,0 +1,764 @@
+{
+  "best_params": {
+    "n_estimators": 450,
+    "max_depth": null,
+    "min_samples_split": 11,
+    "min_samples_leaf": 2,
+    "max_features": 0.35,
+    "max_samples": null,
+    "lncrna_weight": 2.6062786672887372
+  },
+  "best_value": 0.8094333333333333,
+  "trials": [
+    {
+      "n": 0,
+      "value": 0.7855666666666666,
+      "params": {
+        "n_estimators": 220,
+        "max_depth": 50,
+        "min_samples_split": 4,
+        "min_samples_leaf": 10,
+        "max_features": "log2",
+        "max_samples": null,
+        "lncrna_weight": 5.63
+      },
+      "oob_auc": 0.9698842919444445,
+      "fit_s": 9.450126647949219
+    },
+    {
+      "n": 1,
+      "value": 0.8014166666666667,
+      "params": {
+        "n_estimators": 250,
+        "max_depth": null,
+        "min_samples_split": 4,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 0.788672525446933
+      },
+      "oob_auc": 0.9731149109722221,
+      "fit_s": 54.37603044509888
+    },
+    {
+      "n": 2,
+      "value": 0.7947166666666666,
+      "params": {
+        "n_estimators": 200,
+        "max_depth": 50,
+        "min_samples_split": 4,
+        "min_samples_leaf": 6,
+        "max_features": 0.15,
+        "max_samples": 0.7,
+        "lncrna_weight": 0.7638295233734437
+      },
+      "oob_auc": 0.9723965684722222,
+      "fit_s": 13.264469385147095
+    },
+    {
+      "n": 3,
+      "value": 0.7983666666666667,
+      "params": {
+        "n_estimators": 100,
+        "max_depth": 20,
+        "min_samples_split": 3,
+        "min_samples_leaf": 14,
+        "max_features": 0.35,
+        "max_samples": 0.5,
+        "lncrna_weight": 1.8206130838213785
+      },
+      "oob_auc": 0.9720358331944444,
+      "fit_s": 11.422068357467651
+    },
+    {
+      "n": 4,
+      "value": 0.7896333333333333,
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 20,
+        "min_samples_split": 19,
+        "min_samples_leaf": 12,
+        "max_features": "sqrt",
+        "max_samples": 0.7,
+        "lncrna_weight": 1.2133092371298186
+      },
+      "oob_auc": 0.9713483022222222,
+      "fit_s": 13.958089590072632
+    },
+    {
+      "n": 5,
+      "value": 0.7904833333333333,
+      "params": {
+        "n_estimators": 200,
+        "max_depth": 30,
+        "min_samples_split": 20,
+        "min_samples_leaf": 16,
+        "max_features": 0.15,
+        "max_samples": null,
+        "lncrna_weight": 0.666827835523008
+      },
+      "oob_auc": 0.9718847797222221,
+      "fit_s": 15.010664463043213
+    },
+    {
+      "n": 6,
+      "value": 0.7817333333333334,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 8,
+        "min_samples_leaf": 15,
+        "max_features": "log2",
+        "max_samples": 0.7,
+        "lncrna_weight": 1.70555194623708
+      },
+      "oob_auc": 0.9701876061111111,
+      "fit_s": 16.424901008605957
+    },
+    {
+      "n": 7,
+      "value": 0.7835666666666666,
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_split": 14,
+        "min_samples_leaf": 7,
+        "max_features": "log2",
+        "max_samples": 0.7,
+        "lncrna_weight": 0.7463748450077031
+      },
+      "oob_auc": 0.9712204731944444,
+      "fit_s": 11.859630107879639
+    },
+    {
+      "n": 8,
+      "value": 0.7942666666666667,
+      "params": {
+        "n_estimators": 500,
+        "max_depth": 30,
+        "min_samples_split": 5,
+        "min_samples_leaf": 18,
+        "max_features": 0.15,
+        "max_samples": 0.7,
+        "lncrna_weight": 4.244771411573329
+      },
+      "oob_auc": 0.9709564513888891,
+      "fit_s": 29.22099208831787
+    },
+    {
+      "n": 9,
+      "value": 0.7961833333333334,
+      "params": {
+        "n_estimators": 100,
+        "max_depth": null,
+        "min_samples_split": 8,
+        "min_samples_leaf": 19,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 1.0560202194220325
+      },
+      "oob_auc": 0.9722292376388889,
+      "fit_s": 18.959242582321167
+    },
+    {
+      "n": 10,
+      "value": 0.8036333333333333,
+      "params": {
+        "n_estimators": 200,
+        "max_depth": null,
+        "min_samples_split": 6,
+        "min_samples_leaf": 8,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.0952940971322316
+      },
+      "oob_auc": 0.9728667865277777,
+      "fit_s": 39.08165168762207
+    },
+    {
+      "n": 11,
+      "value": 0.80415,
+      "params": {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 7,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 1.9856966681783506
+      },
+      "oob_auc": 0.9731678029166668,
+      "fit_s": 60.05703139305115
+    },
+    {
+      "n": 12,
+      "value": 0.8029166666666667,
+      "params": {
+        "n_estimators": 350,
+        "max_depth": null,
+        "min_samples_split": 8,
+        "min_samples_leaf": 9,
+        "max_features": 0.25,
+        "max_samples": null,
+        "lncrna_weight": 2.3074028032948255
+      },
+      "oob_auc": 0.9729500945833333,
+      "fit_s": 47.10693597793579
+    },
+    {
+      "n": 13,
+      "value": 0.8069999999999999,
+      "params": {
+        "n_estimators": 350,
+        "max_depth": null,
+        "min_samples_split": 3,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 3.2687132505109604
+      },
+      "oob_auc": 0.9722837550000001,
+      "fit_s": 79.72723031044006
+    },
+    {
+      "n": 14,
+      "value": 0.8081833333333334,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": null,
+        "min_samples_split": 4,
+        "min_samples_leaf": 3,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 1.93802063045188
+      },
+      "oob_auc": 0.9731696455555555,
+      "fit_s": 87.13312005996704
+    },
+    {
+      "n": 15,
+      "value": 0.8078333333333333,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 50,
+        "min_samples_split": 3,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.1437783911437323
+      },
+      "oob_auc": 0.9726658090277779,
+      "fit_s": 91.81038188934326
+    },
+    {
+      "n": 16,
+      "value": 0.80715,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": 50,
+        "min_samples_split": 6,
+        "min_samples_leaf": 5,
+        "max_features": 0.25,
+        "max_samples": null,
+        "lncrna_weight": 1.719919771556832
+      },
+      "oob_auc": 0.9733657619444445,
+      "fit_s": 65.79382133483887
+    },
+    {
+      "n": 17,
+      "value": 0.8030166666666667,
+      "params": {
+        "n_estimators": 500,
+        "max_depth": 50,
+        "min_samples_split": 7,
+        "min_samples_leaf": 7,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 3.6063124763195034
+      },
+      "oob_auc": 0.97302464375,
+      "fit_s": 98.97907257080078
+    },
+    {
+      "n": 18,
+      "value": 0.8050666666666667,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": null,
+        "min_samples_split": 10,
+        "min_samples_leaf": 5,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 1.0436268192951537
+      },
+      "oob_auc": 0.9735995980555555,
+      "fit_s": 83.16039109230042
+    },
+    {
+      "n": 19,
+      "value": 0.8053,
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 30,
+        "min_samples_split": 10,
+        "min_samples_leaf": 5,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.814662819210254
+      },
+      "oob_auc": 0.9729279547222225,
+      "fit_s": 63.60072731971741
+    },
+    {
+      "n": 20,
+      "value": 0.7922,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 5,
+        "max_features": "log2",
+        "max_samples": null,
+        "lncrna_weight": 1.8087964680886848
+      },
+      "oob_auc": 0.9714936425,
+      "fit_s": 22.287918090820312
+    },
+    {
+      "n": 21,
+      "value": 0.80675,
+      "params": {
+        "n_estimators": 250,
+        "max_depth": 50,
+        "min_samples_split": 6,
+        "min_samples_leaf": 1,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.0411318579230535
+      },
+      "oob_auc": 0.9717690299999998,
+      "fit_s": 60.27742123603821
+    },
+    {
+      "n": 22,
+      "value": 0.8036,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 50,
+        "min_samples_split": 4,
+        "min_samples_leaf": 6,
+        "max_features": 0.25,
+        "max_samples": null,
+        "lncrna_weight": 0.7404900149255871
+      },
+      "oob_auc": 0.9735874015277778,
+      "fit_s": 57.488216161727905
+    },
+    {
+      "n": 23,
+      "value": 0.80835,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 5,
+        "min_samples_leaf": 3,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 2.266141274220484
+      },
+      "oob_auc": 0.97294377,
+      "fit_s": 76.29701805114746
+    },
+    {
+      "n": 24,
+      "value": 0.8074333333333333,
+      "params": {
+        "n_estimators": 500,
+        "max_depth": null,
+        "min_samples_split": 3,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 1.2539764002814247
+      },
+      "oob_auc": 0.9733832341666667,
+      "fit_s": 113.50162982940674
+    },
+    {
+      "n": 25,
+      "value": 0.8043833333333333,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 3,
+        "min_samples_leaf": 6,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 2.380310836591371
+      },
+      "oob_auc": 0.9730403156944444,
+      "fit_s": 71.47954750061035
+    },
+    {
+      "n": 26,
+      "value": 0.8064333333333333,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 50,
+        "min_samples_split": 2,
+        "min_samples_leaf": 1,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 0.9398218508563689
+      },
+      "oob_auc": 0.9731918012499999,
+      "fit_s": 94.69040036201477
+    },
+    {
+      "n": 27,
+      "value": 0.8088833333333334,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": 50,
+        "min_samples_split": 7,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 3.2549119169873912
+      },
+      "oob_auc": 0.9724322956944444,
+      "fit_s": 101.70790648460388
+    },
+    {
+      "n": 28,
+      "value": 0.8069500000000001,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 50,
+        "min_samples_split": 8,
+        "min_samples_leaf": 4,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 3.0591268551464585
+      },
+      "oob_auc": 0.9729355956944444,
+      "fit_s": 84.80279684066772
+    },
+    {
+      "n": 29,
+      "value": 0.8034,
+      "params": {
+        "n_estimators": 350,
+        "max_depth": null,
+        "min_samples_split": 2,
+        "min_samples_leaf": 6,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 3.4310928060863013
+      },
+      "oob_auc": 0.9727407652777779,
+      "fit_s": 55.799426794052124
+    },
+    {
+      "n": 30,
+      "value": 0.8054333333333333,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 6,
+        "min_samples_leaf": 3,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 5.139897262733112
+      },
+      "oob_auc": 0.972430916388889,
+      "fit_s": 76.62558031082153
+    },
+    {
+      "n": 31,
+      "value": 0.8071166666666667,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 30,
+        "min_samples_split": 7,
+        "min_samples_leaf": 3,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 1.4308061232282887
+      },
+      "oob_auc": 0.9731209743055556,
+      "fit_s": 67.45497131347656
+    },
+    {
+      "n": 32,
+      "value": 0.8077833333333333,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": 30,
+        "min_samples_split": 3,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 2.1254577602575053
+      },
+      "oob_auc": 0.9727605863888888,
+      "fit_s": 77.88260507583618
+    },
+    {
+      "n": 33,
+      "value": 0.80725,
+      "params": {
+        "n_estimators": 350,
+        "max_depth": 50,
+        "min_samples_split": 5,
+        "min_samples_leaf": 4,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 1.5073457482477868
+      },
+      "oob_auc": 0.9732524543055555,
+      "fit_s": 74.62252187728882
+    },
+    {
+      "n": 34,
+      "value": 0.8074,
+      "params": {
+        "n_estimators": 350,
+        "max_depth": 50,
+        "min_samples_split": 11,
+        "min_samples_leaf": 1,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.0461179943476964
+      },
+      "oob_auc": 0.9720266648611111,
+      "fit_s": 82.23450088500977
+    },
+    {
+      "n": 35,
+      "value": 0.8062333333333334,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": null,
+        "min_samples_split": 7,
+        "min_samples_leaf": 4,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 2.3663849240195627
+      },
+      "oob_auc": 0.9729717445833335,
+      "fit_s": 66.82452988624573
+    },
+    {
+      "n": 36,
+      "value": 0.8050666666666667,
+      "params": {
+        "n_estimators": 500,
+        "max_depth": 50,
+        "min_samples_split": 9,
+        "min_samples_leaf": 1,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 5.517939713004081
+      },
+      "oob_auc": 0.9707208459722221,
+      "fit_s": 121.68875217437744
+    },
+    {
+      "n": 37,
+      "value": 0.8014666666666667,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 50,
+        "min_samples_split": 7,
+        "min_samples_leaf": 3,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 5.809702674706139
+      },
+      "oob_auc": 0.9723494276388888,
+      "fit_s": 87.95890641212463
+    },
+    {
+      "n": 38,
+      "value": 0.8038833333333333,
+      "params": {
+        "n_estimators": 300,
+        "max_depth": 50,
+        "min_samples_split": 5,
+        "min_samples_leaf": 7,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.6545865914651077
+      },
+      "oob_auc": 0.973041360138889,
+      "fit_s": 61.433133602142334
+    },
+    {
+      "n": 39,
+      "value": 0.8064666666666667,
+      "params": {
+        "n_estimators": 500,
+        "max_depth": 50,
+        "min_samples_split": 3,
+        "min_samples_leaf": 5,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 4.554720776273232
+      },
+      "oob_auc": 0.9728392770833334,
+      "fit_s": 103.34010338783264
+    },
+    {
+      "n": 40,
+      "value": 0.8074166666666667,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 50,
+        "min_samples_split": 3,
+        "min_samples_leaf": 4,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.353210835103379
+      },
+      "oob_auc": 0.9731768251388889,
+      "fit_s": 85.3945701122284
+    },
+    {
+      "n": 41,
+      "value": 0.8082333333333334,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 3,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 2.071547912915266
+      },
+      "oob_auc": 0.9728517180555556,
+      "fit_s": 78.52860355377197
+    },
+    {
+      "n": 42,
+      "value": 0.80765,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": null,
+        "min_samples_split": 4,
+        "min_samples_leaf": 1,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.382506582094201
+      },
+      "oob_auc": 0.9720302008333332,
+      "fit_s": 95.62609720230103
+    },
+    {
+      "n": 43,
+      "value": 0.8072833333333334,
+      "params": {
+        "n_estimators": 500,
+        "max_depth": null,
+        "min_samples_split": 5,
+        "min_samples_leaf": 6,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 1.8110252556799968
+      },
+      "oob_auc": 0.9732164384722222,
+      "fit_s": 79.4820077419281
+    },
+    {
+      "n": 44,
+      "value": 0.8079000000000001,
+      "params": {
+        "n_estimators": 500,
+        "max_depth": null,
+        "min_samples_split": 8,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 2.5729647619923703
+      },
+      "oob_auc": 0.9725775662500001,
+      "fit_s": 86.17260789871216
+    },
+    {
+      "n": 45,
+      "value": 0.80845,
+      "params": {
+        "n_estimators": 400,
+        "max_depth": null,
+        "min_samples_split": 10,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.3798580512305993
+      },
+      "oob_auc": 0.972624011111111,
+      "fit_s": 90.32116866111755
+    },
+    {
+      "n": 46,
+      "value": 0.8094333333333333,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 11,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 2.6062786672887372
+      },
+      "oob_auc": 0.9725814429166668,
+      "fit_s": 101.1538872718811
+    },
+    {
+      "n": 47,
+      "value": 0.8058666666666667,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 3,
+        "min_samples_leaf": 1,
+        "max_features": 0.35,
+        "max_samples": 0.7,
+        "lncrna_weight": 1.6202369463975492
+      },
+      "oob_auc": 0.9723516597222223,
+      "fit_s": 82.69384002685547
+    },
+    {
+      "n": 48,
+      "value": 0.8066833333333333,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 9,
+        "min_samples_leaf": 2,
+        "max_features": 0.35,
+        "max_samples": null,
+        "lncrna_weight": 3.2996181582564343
+      },
+      "oob_auc": 0.9724450922222223,
+      "fit_s": 101.9632453918457
+    },
+    {
+      "n": 49,
+      "value": 0.8064,
+      "params": {
+        "n_estimators": 450,
+        "max_depth": null,
+        "min_samples_split": 6,
+        "min_samples_leaf": 3,
+        "max_features": 0.35,
+        "max_samples": 0.5,
+        "lncrna_weight": 2.1021050096215945
+      },
+      "oob_auc": 0.9727999183333332,
+      "fit_s": 57.426337242126465
+    }
+  ]
+}
