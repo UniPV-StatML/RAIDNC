@@ -1,0 +1,45 @@
+baseline test AUC=0.9729 MCC=0.7956
+[1] single permutation done (86s)
+[2] grouped permutation done (97s)
+[3] SHAP: 0.6s/sample/core -> explaining 2000 balanced test samples on 28 cores
+[3] SHAP done (111s)
+[4] {
+ "n_train_with_orf": 111687,
+ "frac_longest_orf_minus_PC": 0.17138254297417266,
+ "frac_longest_orf_minus_lnc": 0.4907383103978402,
+ "kozak_v1_AUC_for_minus_strand": 0.8565385121560014,
+ "kozak_v1_AUC_for_label": 0.7255183904166667,
+ "kozak_v2_AUC_for_label": 0.687421016388889,
+ "n_orfs_v1_AUC_for_minus_strand": 0.6550761121515498,
+ "n_orfs_v1_AUC_for_label": 0.6582342541666667,
+ "n_orfs_v2_AUC_for_label": 0.6374334962499999,
+ "kozak_v1_mean_plus_PC": 0.779355539928437,
+ "kozak_v1_mean_minus_PC": -2.5402179
+}
+           feature    MDI  auc_drop_mean  auc_drop_sd  mean_abs_shap  direction_corr  rank_MDI  rank_auc_drop_mean  rank_mean_abs_shap
+     hexamer_score 0.1929         0.0514       0.0030         0.1131         -0.8327         2                   1                   1
+       longest_orf 0.2331         0.0309       0.0012         0.1053         -0.6557         1                   3                   2
+frame_maxrun_ratio 0.0634         0.0495       0.0014         0.0763         -0.8553         4                   2                   3
+            length 0.0589         0.0145       0.0006         0.0486         -0.1141         6                   4                   4
+           fickett 0.0431         0.0059       0.0005         0.0405         -0.8500         7                   5                   5
+  kmer_entropy_orf 0.0610         0.0052       0.0003         0.0304         -0.4696         5                   6                   6
+  orf_length_ratio 0.0686         0.0037       0.0003         0.0284         -0.7128         3                   7                   7
+      orf_coverage 0.0260         0.0028       0.0003         0.0158         -0.8676         8                   9                   8
+      kmer_entropy 0.0128         0.0028       0.0003         0.0151         -0.7037        10                   8                   9
+               cga 0.0150         0.0009       0.0002         0.0142         -0.7969         9                  12                  10
+               cgg 0.0098         0.0023       0.0003         0.0113         -0.7902        11                  10                  11
+               gcg 0.0093         0.0011       0.0003         0.0099         -0.7338        13                  11                  12
+               ccg 0.0094         0.0008       0.0002         0.0088         -0.7667        12                  13                  13
+               cac 0.0069         0.0007       0.0002         0.0077          0.7899        14                  14                  14
+               tcg 0.0063         0.0007       0.0002         0.0070         -0.8295        15                  15                  15
+                   feature  n_cols  auc_drop_mean  auc_drop_sd  mcc_drop_mean  mcc_drop_sd
+    all ORF-based features      10         0.2247       0.0060         0.4706       0.0111
+      ORF length/structure       5         0.0607       0.0017         0.1559       0.0070
+             hexamer_score       1         0.0514       0.0030         0.1747       0.0065
+        frame_maxrun_ratio       1         0.0495       0.0014         0.0851       0.0031
+    3-mer composition (64)      64         0.0231       0.0013         0.0567       0.0042
+                    length       1         0.0145       0.0006         0.0267       0.0020
+                   fickett       1         0.0059       0.0005         0.0298       0.0042
+        codon usage in ORF       2         0.0052       0.0003         0.0151       0.0021
+   GC / transcript entropy       2         0.0027       0.0003         0.0051       0.0014
+start context (kozak, UTR)       2         0.0011       0.0001         0.0043       0.0014

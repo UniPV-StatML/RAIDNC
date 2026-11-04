@@ -1,10 +1,10 @@
-numpy
-pandas
-biopython
-scikit-learn
-scipy
-matplotlib
-seaborn
-joblib
-tqdm
-orfipy
+# RAIDNC v2 -- versions used to train and validate the shipped models (Python 3.12, Linux/WSL)
+numpy==2.5.4
+pandas==3.0.6
+scipy==1.18.1
+scikit-learn==1.7.0   # pin: the pickled RandomForest must be loaded with the same version
+biopython==1.88
+joblib==1.6.0
+orfipy==0.0.4         # builds a C extension: on Windows use WSL, or install from bioconda
+# experiments / retuning only
+optuna==5.0.0

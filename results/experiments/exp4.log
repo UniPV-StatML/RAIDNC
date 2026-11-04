@@ -1,0 +1,2 @@
+[fix_maxrun_compact] nfeat=79 CV acc=0.9166 rec_lnc=0.9536 rec_pc=0.8796 auc=0.9727 pc@lnc981=0.8030 | TEST acc=0.9162 rec_lnc=0.9457 rec_pc=0.8867 auc=0.9729 | ATH=0.947 celegans=0.807 fruitfly=0.866 yeast=0.873 mouse=0.973 gencode_human_lnc=0.927 gencode_mouse_lnc=0.927 | 378s
+[fix_maxrun_compact@thr=0.301] TEST acc=0.8917 rec_lnc=0.9790 rec_pc=0.8043 mcc=0.7956 | ATH=0.9946 celegans=0.9283 fruitfly=0.9545 yeast=0.9455 mouse=0.9894 gencode_human_lnc=0.9621 gencode_mouse_lnc=0.9689

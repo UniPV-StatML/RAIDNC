@@ -1,0 +1,7 @@
+,test_Recall_lncRNA,test_Precision_lncRNA,test_F1_lncRNA,test_Recall_PC,test_Precision_PC,test_F1_PC,test_Accuracy,recall_A._thaliana,recall_C._elegans,recall_D._melanogaster,recall_M._musculus,recall_S._cerevisiae,recall_macro,recall_micro
+CPC2,93.57,73.79,82.51,66.77,91.21,77.1,80.17,98.15,85.42,92.7,86.81,89.09,90.4,88.4
+LncDC,96.87,76.05,85.21,69.41,95.67,80.45,83.16,98.54,87.16,89.26,94.32,94.55,92.8,93.1
+RAIDNC v1 (UTR+CDS filter),98.1,80.32,88.33,75.97,97.56,85.42,87.03,96.47,90.23,92.76,98.43,94.55,94.5,96.9
+RAIDNC v1 (no filter),98.0,80.59,88.45,76.4,97.45,85.65,87.2,96.86,89.82,92.36,98.3,94.55,94.4,96.7
+RAIDNC v2 (compact),97.9,83.34,90.04,80.43,97.46,88.13,89.17,99.46,92.83,95.45,98.94,94.55,96.24,98.02
+RAIDNC v2 (tuned),97.73,83.89,90.28,81.23,97.29,88.54,89.48,99.63,93.31,95.54,98.97,94.55,96.4,98.08
