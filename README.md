@@ -13,7 +13,7 @@ RAIDNC is an **alignment-free** Random Forest classifier that separates long non
 from protein-coding (PC) transcripts. It combines tri-nucleotide frequencies with thirteen biological
 sequence features computed on the sense strand. It needs no reference genome and no alignment.
 
-**Version 2.0.** See [CHANGELOG.md](CHANGELOG.md) for what changed from v1 (tags `1.1` / `v1.0`).
+**Version 2.0.**
 
 ---
 
@@ -100,7 +100,7 @@ independent test set (3,000/class, seed 42), 60,000 sequences/class for training
 hexamer table rebuilt in each fold, threshold fixed on out-of-fold predictions.
 
 The analyses behind the manuscript (model selection, ablation, Optuna, feature importance, residual
-errors, v1 vs v2 comparison) are in [`experiments/`](experiments/README.md).
+errors) are in [`experiments/`](experiments/README.md).
 
 ---
 
@@ -109,7 +109,6 @@ errors, v1 vs v2 comparison) are in [`experiments/`](experiments/README.md).
 ```
 RAIDNC/
 ├── requirements.txt
-├── CHANGELOG.md
 ├── scripts/
 │   ├── RAIDNC.py              # command-line prediction
 │   ├── raidnc_features.py     # feature extraction (79 features)

@@ -111,7 +111,7 @@ def main():
         for f in files:
             try:
                 dfs.append(predict_file(f, clf, tab, thr, pool))
-            except Exception as e:  # keep batch mode going, as in v1
+            except Exception as e:  # keep batch mode going
                 print(f'[WARNING] Skipping {f}: {e}')
     finally:
         if pool:

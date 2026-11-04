@@ -10,12 +10,8 @@ Feature vector (79 columns, fixed order):
      1  frame_maxrun_ratio: longest stop-free run over the 3 sense frames (nt) / length
      1  hexamer log-likelihood score of the longest ORF (table fitted on training data)
 
-Differences from v1 (RAIDNC_reproduce_ncv6.py):
-  * ORFs are searched on the sense strand only (orfipy strand='f'). v1 used orfipy's
-    default strand='b' and then sliced seq[start:stop] as if every ORF were on '+',
-    so minus-strand ORFs produced features from the wrong sequence/frame.
-  * one orfipy call per sequence instead of eight.
-  * new feature frame_maxrun_ratio.
+ORFs are searched on the sense strand only (NONCODE and GENCODE transcripts are strand-oriented),
+with one orfipy call per sequence.
 """
 import math
 from itertools import product

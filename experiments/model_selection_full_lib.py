@@ -15,7 +15,8 @@ from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_sc
 
 sys.path.insert(0, EXP)
 sys.path.insert(0, f'{ROOT}/scripts')
-from common import R, sample_with_ids  # noqa: E402
+from common import (load_and_bin, sample_with_ids, FASTA_LNC, FASTA_PC, N_BINS,  # noqa: E402
+                    TEST_SEQ_LIMIT, TEST_RANDOM_STATE)
 import raidnc_features as RF  # noqa: E402
 
 OUT = f'{ROOT}/results/paper'
@@ -24,10 +25,10 @@ SEED = 42
 KS = (3, 6, 9, 12)
 
 t0 = time.time()
-lnc_bins = R.load_and_bin(R.FASTA_LNC, label=1, n_bins=R.N_BINS)
-pc_bins = R.load_and_bin(R.FASTA_PC, label=0, n_bins=R.N_BINS, filter_config='config_both')
-_, lx = sample_with_ids(lnc_bins, R.TEST_SEQ_LIMIT, 1, R.TEST_RANDOM_STATE)
-_, px = sample_with_ids(pc_bins, R.TEST_SEQ_LIMIT, 0, R.TEST_RANDOM_STATE)
+lnc_bins = load_and_bin(FASTA_LNC, label=1, n_bins=N_BINS)
+pc_bins = load_and_bin(FASTA_PC, label=0, n_bins=N_BINS, filter_config='config_both')
+_, lx = sample_with_ids(lnc_bins, TEST_SEQ_LIMIT, 1, TEST_RANDOM_STATE)
+_, px = sample_with_ids(pc_bins, TEST_SEQ_LIMIT, 0, TEST_RANDOM_STATE)
 a, _ = sample_with_ids(lnc_bins, 5000, 1, SEED, lx)
 b, _ = sample_with_ids(pc_bins, 5000, 0, SEED, px)
 d = pd.concat([a, b], ignore_index=True)
