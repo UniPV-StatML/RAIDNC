@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, '..', 'results', 'importance')
 TOP = 15
-BAR, BAR_NEW = '#3a78b5', '#0b3b6f'
+BAR = '#3a78b5'
 INK, MUTED, GRID = '#1f1f1f', '#555555', '#e3e3e3'
 
 s = pd.read_csv(os.path.join(RES, 'importance_summary.csv'))
@@ -23,20 +23,20 @@ g = pd.read_csv(os.path.join(RES, 'permutation_groups.csv'))
 plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 9.5})
 
 
+# display names: the stop-free stretch feature is labelled as in the manuscript
+RENAME = {'frame_maxrun_ratio': 'stop_free_stretch_ratio'}
+
+
 def label(f):
-    return f + '  (new)' if f == 'frame_maxrun_ratio' else f
+    return RENAME.get(f, f)
 
 
 def bars(ax, d, col, title, xlabel, err=None, fmt='{:.3f}'):
     d = d.sort_values(col, ascending=False).head(TOP).iloc[::-1]
-    colors = [BAR_NEW if f == 'frame_maxrun_ratio' else BAR for f in d['feature']]
-    ax.barh(range(len(d)), d[col], height=0.62, color=colors,
+    ax.barh(range(len(d)), d[col], height=0.62, color=BAR,
             xerr=d[err] if err else None, error_kw=dict(ecolor=MUTED, lw=1, capsize=2))
     ax.set_yticks(range(len(d)))
     ax.set_yticklabels([label(f) for f in d['feature']])
-    for t in ax.get_yticklabels():
-        if t.get_text().endswith('(new)'):
-            t.set_fontweight('bold')
     for i, v in enumerate(d[col]):
         ax.text(v + d[col].max() * 0.02 + (d[err].iloc[i] if err else 0), i, fmt.format(v),
                 va='center', fontsize=8, color=MUTED)
